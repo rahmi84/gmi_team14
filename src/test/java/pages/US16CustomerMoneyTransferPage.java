@@ -1,8 +1,5 @@
 package pages;
 
-<<<<<<< HEAD
-public class US16CustomerMoneyTransferPage {
-=======
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -35,5 +32,4 @@ public class US16CustomerMoneyTransferPage {
 
 
 
->>>>>>> master
 }

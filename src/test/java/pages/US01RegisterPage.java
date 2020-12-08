@@ -1,8 +1,5 @@
 package pages;
 
-<<<<<<< HEAD
-public class US01RegisterPage {
-=======
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -51,5 +48,4 @@ public class US01RegisterPage {
 
 
 
->>>>>>> master
 }
