@@ -1,4 +1,4 @@
 package pages;
 
-public class CreateNewAccountPage {
+public class CreateANewAccountPage {
 }
