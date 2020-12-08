@@ -5,9 +5,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-public class UserInfoPage {
+public class US06UserInfoPage {
 
-    public  UserInfoPage(){
+    public US06UserInfoPage(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
