@@ -19,7 +19,7 @@ public class Hooks {
         if(scenario.isFailed()){
             scenario.embed(screenshot , "image/png");
         }
-        Driver.closeDriver();
+      //  Driver.closeDriver();
     }
 
 
