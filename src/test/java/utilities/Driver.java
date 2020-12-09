@@ -10,7 +10,6 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.*;
-import pages.US04SignInPage;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -346,35 +345,6 @@ public class Driver {
             }
         });
     }
-    public static void loginAll(String string) {
-        US04SignInPage uS04SignInPage = new US04SignInPage();
-        Driver.getDriver().get(ConfigReader.getProperty("url"));
-        Driver.waitForClickablility(uS04SignInPage.menuButton, 2);
-        Driver.waitForClickablility(uS04SignInPage.signIn, 2);
-        switch (string) {
-            case "employee":
-                uS04SignInPage.username.sendKeys("EmployeeUsername");
-                uS04SignInPage.password.sendKeys("EmployeePassword");
-                uS04SignInPage.submitSignInButton.submit();
-                break;
-            case "customer":
-                uS04SignInPage.username.sendKeys("CustomerUsername");
-                uS04SignInPage.password.sendKeys("CustomerPassword");
-                uS04SignInPage.submitSignInButton.submit();
-                break;
-            case "admin":
-                uS04SignInPage.username.sendKeys("AdminUsername");
-                uS04SignInPage.password.sendKeys("AdminPassword");
-                uS04SignInPage.submitSignInButton.submit();
-                break;
-            case "user":
-                uS04SignInPage.username.sendKeys("UserUsername");
-                uS04SignInPage.password.sendKeys("UserPassword");
-                uS04SignInPage.submitSignInButton.submit();
-                break;
 
-
-        }
-    }
 
 }
