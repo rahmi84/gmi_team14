@@ -45,6 +45,8 @@ public class US13EmployeeManageAccountsPage {
     @FindBy(xpath = "//span[text()='Save']")
     public WebElement saveButtonElement;
 
+    @FindBy(css = "input.is-invalid.form-control")
+    public WebElement blankBalanceErrorElement;
 
 
 
