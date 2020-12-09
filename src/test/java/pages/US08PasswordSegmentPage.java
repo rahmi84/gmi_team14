@@ -83,6 +83,8 @@ public class US08PasswordSegmentPage {
 
     //4type
     public String passwordValidWithEverything=faker.internet().password(7,40,true,true,true);
+    public String passwordValidWithEverythingBtw4_6=faker.internet().password(4,6,true,true,true);
+    public String passwordValidWithEverythingBtw1_3=faker.internet().password(1,3,true,true,true);
     // 3 type
     public String passwordValidWithNoDigit=faker.internet().password(7,40,true,true,false);
     public String passwordValidWithNoChar=faker.internet().password(7,40,true,false,true);
@@ -93,19 +95,24 @@ public class US08PasswordSegmentPage {
     public String passwordValidWithLower_Digit=faker.internet().password(7,40,false,false,true);
     public String passwordValidWithLower_Char=faker.internet().password(7,40,false,true,false);
     public String passwordValidWithLower_Upper=faker.internet().password(7,40,true,false,false);
-    public String passwordValidWithUpper_Digit=faker.internet().password(7,40,true,false,false).toUpperCase();
+    public String passwordValidWithUpper_Digit=faker.internet().password(7,40,true,false,true).toUpperCase();
     public String passwordValidWithUpper_Char=faker.internet().password(7,40,true,true,false).toUpperCase();
-    public String passwordValidWithChar_Digit=charPassword(20)+digitPassword(20);
+    public String passwordValidWithChar_Digit4_6=charPassword(2,3)+digitPassword(2,3);
+    public String passwordValidWithChar_Digit7_40=charPassword(4,20)+digitPassword(3,20);
 
     //1 type
-    public String passwordwithlowercase=faker.internet().password(4,40,false,false,false);
-    public String passwordwithUppercase=faker.internet().password(4,40,false,false,false).toUpperCase();
-    public String passwordDigit=digitPassword(40);
-    public String passwordChar=charPassword(40);
+    public String passwordwithlowercase7_40=faker.internet().password(7,40,false,false,false);
+    public String passwordwithUppercase7_40=faker.internet().password(7,40,false,false,false).toUpperCase();
+    public String passwordwithlowercase4_6=faker.internet().password(4,6,false,false,false);
+    public String passwordwithUppercase4_6=faker.internet().password(4,6,false,false,false).toUpperCase();
+    public String passwordDigit4_6=digitPassword(4,6);
+    public String passwordChar4_6=charPassword(4,6);
+    public String passwordDigit7_40=digitPassword(7,40);
+    public String passwordChar7_40=charPassword(7,40);
 
 
-    public static String charPassword(int size ){
-        int rand=7+random.nextInt(size-7);
+    public static String charPassword(int min,int max ){
+        int rand=min+random.nextInt(max-min);
         String character="~`\\\"!@#$%^&*()_+-=|}]{[:;'<,>./?";
         String pass="";
         for (int i = 0; i <rand ; i++) {
@@ -115,8 +122,8 @@ public class US08PasswordSegmentPage {
         return pass;
     }
 
-    public static String digitPassword(int size){
-        int rand=7+random.nextInt(size-7);
+    public static String digitPassword(int min,int max ){
+        int rand=min+random.nextInt(max-min);
         String digits="0123456789";
         String pass="";
         for (int i = 0; i <rand ; i++) {
