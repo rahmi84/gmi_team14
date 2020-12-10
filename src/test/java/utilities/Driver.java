@@ -384,7 +384,7 @@ public class Driver {
                 Driver.wait(1);
                 signIn.username.sendKeys(ConfigReader.getProperty("UserUsername"));
                 Driver.wait(1);
-                signIn.password.sendKeys(ConfgitigReader.getProperty("UserPassword"));
+                signIn.password.sendKeys(ConfigReader.getProperty("UserPassword"));
                 Driver.wait(1);
                 signIn.submitSignInButton.submit();
                 Driver.wait(1);
