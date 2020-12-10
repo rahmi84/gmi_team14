@@ -34,7 +34,7 @@ public class US08PasswordSegmentPage {
     @FindBy(id = "confirmPassword")
     public WebElement confirmPassword;
 
-    @FindBy(xpath = " //*[@id=\"password-form\"]/div[]/div")
+    @FindBy(xpath = " //div[@class=\"text-danger form-group\"][1]/div")
     public WebElement confirmNewPasswordInvalidFeedback;
 
     @FindBy(css = "button[type=\"submit\"]")
@@ -55,7 +55,7 @@ public class US08PasswordSegmentPage {
     //Takes String as a parameter of Options " Admin  User  Manager  Customer
     public static void landMeOnPasswordChangeMenu(String role) {
 
-        signInAsrole(role);
+        loginwithRole(role);
         WebElement account = Driver.getDriver().findElement(By.cssSelector("li[id='account-menu']"));
         account.click();
 
@@ -66,18 +66,16 @@ public class US08PasswordSegmentPage {
 
 
     //Takes String as a parameter of Options " Admin  User  Manager  Customer
-    public static void signInAsrole(String role) {
+    public static void loginwithRole(String role) {
+        US04SignInPage us04SignInPage=new US04SignInPage();
         Driver.getDriver().get(ConfigReader.getProperty("url"));
-        WebElement userphoto = Driver.getDriver().findElement(By.cssSelector("li[id='account-menu']"));
-        userphoto.click();
-        WebElement signin = Driver.getDriver().findElement(By.cssSelector("a[id='login-item']"));
-        signin.click();
-        WebElement username = Driver.getDriver().findElement(By.id("username"));
-        username.sendKeys(ConfigReader.getProperty(role + "Username"));
-        WebElement password = Driver.getDriver().findElement(By.id("password"));
-        password.sendKeys(ConfigReader.getProperty(role + "Password"));
-        WebElement signIn = Driver.getDriver().findElement(By.cssSelector(" button[type=\"submit\"]"));
-        signIn.click();
+        Driver.waitForClickablility(us04SignInPage.menuButton, 2);
+        Driver.waitForClickablility(us04SignInPage.signIn, 2);
+        us04SignInPage.menuButton.click();
+        us04SignInPage.signIn.click();
+        us04SignInPage.username.sendKeys(ConfigReader.getProperty(role + "Username"));
+        us04SignInPage.password.sendKeys(ConfigReader.getProperty(role + "Password"));
+        us04SignInPage.submitSignInButton.click();
     }
 
 
@@ -85,6 +83,8 @@ public class US08PasswordSegmentPage {
     public String passwordValidWithEverything=faker.internet().password(7,40,true,true,true);
     public String passwordValidWithEverythingBtw4_6=faker.internet().password(4,6,true,true,true);
     public String passwordValidWithEverythingBtw1_3=faker.internet().password(1,3,true,true,true);
+    public String passwordValidWithEverythingandspace=" "+faker.internet().password(1,3,true,true,true);
+    public String passordempty="";
     // 3 type
     public String passwordValidWithNoDigit=faker.internet().password(7,40,true,true,false);
     public String passwordValidWithNoChar=faker.internet().password(7,40,true,false,true);
