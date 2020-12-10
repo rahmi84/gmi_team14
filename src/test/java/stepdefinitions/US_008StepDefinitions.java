@@ -92,15 +92,15 @@ public class US_008StepDefinitions {
 
     @Then("password strength should be one bar")
     public void password_strength_should_be_one_bar() {
-       Assert.assertEquals("background-color: rgb(255, 0, 0);",us08PasswordSegmentPage.passwordStrenghBar.get(0).getAttribute("style"));
-       Assert.assertEquals("background-color: rgb(221, 221, 221);",us08PasswordSegmentPage.passwordStrenghBar.get(1).getAttribute("style"));
+        Assert.assertEquals("background-color: rgb(255, 0, 0);",us08PasswordSegmentPage.passwordStrenghBar.get(0).getAttribute("style"));
+        Assert.assertEquals("background-color: rgb(221, 221, 221);",us08PasswordSegmentPage.passwordStrenghBar.get(1).getAttribute("style"));
     }
 
     @When("I entered the new password with just upper-case chars between four and six")
     public void i_entered_the_new_password_with_just_upper_case_chars_between_four_and_six() {
-       String newpassword=us08PasswordSegmentPage.passwordwithUppercase4_6;
+        String newpassword=us08PasswordSegmentPage.passwordwithUppercase4_6;
         System.out.println("The password is  (uppercase 4-6)"+newpassword);
-       us08PasswordSegmentPage.newPassword.sendKeys(newpassword);
+        us08PasswordSegmentPage.newPassword.sendKeys(newpassword);
 
 
     }
@@ -280,3 +280,4 @@ public class US_008StepDefinitions {
 
 
 }
+
