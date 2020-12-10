@@ -348,45 +348,45 @@ public class Driver {
     }
 
     public static void loginAll(String string) {
-        US04SignInPage us_15_page = new US04SignInPage();
+        US04SignInPage signIn = new US04SignInPage();
         Driver.getDriver().get(ConfigReader.getProperty("url"));
-        Driver.clickWithTimeOut(us_15_page.menuButton, 4);
-        Driver.clickWithTimeOut(us_15_page.signIn, 4);
+        Driver.clickWithTimeOut(signIn.menuButton, 4);
+        Driver.clickWithTimeOut(signIn.signIn, 4);
         switch (string) {
             case "employee":
                 Driver.wait(1);
-                us_15_page.username.sendKeys(ConfigReader.getProperty("EmployeeUsername"));
+                signIn.username.sendKeys(ConfigReader.getProperty("EmployeeUsername"));
                 Driver.wait(1);
-                us_15_page.password.sendKeys(ConfigReader.getProperty("EmployeePassword"));
+                signIn.password.sendKeys(ConfigReader.getProperty("EmployeePassword"));
                 Driver.wait(1);
-                us_15_page.submitSignInButton.submit();
+                signIn.submitSignInButton.submit();
                 Driver.wait(1);
                 break;
             case "customer":
                 Driver.wait(1);
-                us_15_page.username.sendKeys(ConfigReader.getProperty("CustomerUsername"));
+                signIn.username.sendKeys(ConfigReader.getProperty("CustomerUsername"));
                 Driver.wait(1);
-                us_15_page.password.sendKeys(ConfigReader.getProperty("CustomerPassword"));
+                signIn.password.sendKeys(ConfigReader.getProperty("CustomerPassword"));
                 Driver.wait(1);
-                us_15_page.submitSignInButton.submit();
+                signIn.submitSignInButton.submit();
                 Driver.wait(1);
                 break;
             case "admin":
                 Driver.wait(1);
-                us_15_page.username.sendKeys(ConfigReader.getProperty("AdminUsername"));
+                signIn.username.sendKeys(ConfigReader.getProperty("AdminUsername"));
                 Driver.wait(1);
-                us_15_page.password.sendKeys(ConfigReader.getProperty("AdminPassword"));
+                signIn.password.sendKeys(ConfigReader.getProperty("AdminPassword"));
                 Driver.wait(1);
-                us_15_page.submitSignInButton.submit();
+                signIn.submitSignInButton.submit();
                 Driver.wait(1);
                 break;
             case "user":
                 Driver.wait(1);
-                us_15_page.username.sendKeys(ConfigReader.getProperty("UserUsername"));
+                signIn.username.sendKeys(ConfigReader.getProperty("UserUsername"));
                 Driver.wait(1);
-                us_15_page.password.sendKeys(ConfigReader.getProperty("UserPassword"));
+                signIn.password.sendKeys(ConfgitigReader.getProperty("UserPassword"));
                 Driver.wait(1);
-                us_15_page.submitSignInButton.submit();
+                signIn.submitSignInButton.submit();
                 Driver.wait(1);
                 break;
         }
