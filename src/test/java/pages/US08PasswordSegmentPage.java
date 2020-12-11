@@ -55,7 +55,7 @@ public class US08PasswordSegmentPage {
     //Takes String as a parameter of Options " Admin  User  Manager  Customer
     public static void landMeOnPasswordChangeMenu(String role) {
 
-        loginwithRole(role);
+        Driver.loginAll(role);
         WebElement account = Driver.getDriver().findElement(By.cssSelector("li[id='account-menu']"));
         account.click();
 

@@ -11,7 +11,7 @@ public class US_008StepDefinitions {
     US08PasswordSegmentPage us08PasswordSegmentPage=new US08PasswordSegmentPage();
     @Given("I am at the user password page")
     public void i_am_at_the_user_password_page() {
-        US08PasswordSegmentPage.landMeOnPasswordChangeMenu("User");
+        US08PasswordSegmentPage.landMeOnPasswordChangeMenu("user");
     }
 
     @When("Click the current password box")
@@ -272,7 +272,7 @@ public class US_008StepDefinitions {
         System.out.println("The password is  empty"+newpassword);
         us08PasswordSegmentPage.newPassword.sendKeys(newpassword);
     }
-    @Then("I have to see error message {string}")
+     @Then("I have to see error message {string}")
     public void i_have_to_see_error_message(String message) {
        Assert.assertEquals(message,us08PasswordSegmentPage.confirmNewPasswordInvalidFeedback.getText());
     }
