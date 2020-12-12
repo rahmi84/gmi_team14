@@ -1,5 +1,4 @@
 package pages;
 
-public class
-MainCustomerPage {
+public class MainCustomerPage {
 }

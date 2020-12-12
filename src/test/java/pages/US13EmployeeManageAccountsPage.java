@@ -13,13 +13,6 @@ public class US13EmployeeManageAccountsPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-
-    @FindBy(xpath = "//span[text()='My Operations']")
-    public WebElement manageOperationElement;
-
-    @FindBy(xpath = "//span[text()='Manage Accounts']")
-    public WebElement manageAccountElement;
-
     @FindBy(xpath = "//span[text()='Create a new Account']")
     public WebElement EmployeeCreateaNewAccountElemenet;
 
@@ -38,6 +31,11 @@ public class US13EmployeeManageAccountsPage {
     @FindBy(xpath = " //select[@name='accountStatusType']")
     public WebElement accountStatusTypeElement;
 
+    @FindBy(xpath = "  //select[@id='tp-account-employee']")
+    public WebElement employeeClickElement;
+
+
+
     @FindBy(xpath = "//span[text()='Save']")
     public WebElement saveButtonElement;
 
@@ -47,8 +45,8 @@ public class US13EmployeeManageAccountsPage {
     @FindBy(css = "[data-icon='home']")
     public WebElement headerHomeButtonElement;
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
-    /////my methods
+    //////////////////////////////MY METHODS//////////////////////////////////////////////////
+
     public void selectAccounType(String accountType) {
         Select select = new Select(accountTypeElement);
         select.selectByValue(accountType);
@@ -60,31 +58,13 @@ public class US13EmployeeManageAccountsPage {
     }
 
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-    //Takes String as a parameter of Options " Admin  User  Manager  Customer
-
     public static String getAlert(){
         return Driver.getDriver().switchTo().alert().getText();
     }
 
 
-    //Takes String as a parameter of Options " Admin  User  Manager  Customer
-    public static void signInAsrole(String role) {
-        Driver.getDriver().get(ConfigReader.getProperty("url"));
-        WebElement userphoto = Driver.getDriver().findElement(By.cssSelector("li[id='account-menu']"));
-        userphoto.click();
-        WebElement signin = Driver.getDriver().findElement(By.cssSelector("a[id='login-item']"));
-        signin.click();
-        WebElement username = Driver.getDriver().findElement(By.id("username"));
-        username.sendKeys( "Tech14Employee");
-        WebElement password = Driver.getDriver().findElement(By.id("password"));
-        password.sendKeys("Tech14Employee!");
-        WebElement signIn = Driver.getDriver().findElement(By.cssSelector(" button[type=\"submit\"]"));
-        signIn.click();
     }
 
 
 
-}
+

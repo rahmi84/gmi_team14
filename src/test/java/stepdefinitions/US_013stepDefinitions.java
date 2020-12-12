@@ -4,6 +4,7 @@ import io.cucumber.java.en.*;
 import org.junit.Assert;
 
 import org.openqa.selenium.Alert;
+import pages.MainEmployeePage;
 import pages.US13EmployeeManageAccountsPage;
 import sun.reflect.generics.scope.Scope;
 import utilities.Driver;
@@ -16,21 +17,24 @@ import java.util.ListIterator;
 public class US_013stepDefinitions {
 
     US13EmployeeManageAccountsPage US13EmployeeManageAccountsPage = new US13EmployeeManageAccountsPage();
+    MainEmployeePage mainEmployeePage = new MainEmployeePage();
 
-    @Given("sign in as employee role")
-    public void signInAsEmployeeRole() {
-        US13EmployeeManageAccountsPage.signInAsrole("employee");
 
+    @Given("login  as employee")
+    public void loginAsEmployee() {
+
+
+        Driver.loginAll("employee");
     }
 
-    @Given("^user click  create a new account$")
+    @Then("^user click  create a new account$")
     public void user_click_create_a_new_account() {
-        US13EmployeeManageAccountsPage.manageOperationElement.click();
-        US13EmployeeManageAccountsPage.manageAccountElement.click();
+        mainEmployeePage.myOperationsDropdown.click();
+        mainEmployeePage.drpManageAccounts.click();
         US13EmployeeManageAccountsPage.EmployeeCreateaNewAccountElemenet.click();
     }
 
-    @When("^enter a (.+)$")
+    @Given("^enter a (.+)$")
     public void enter_a(String description) {
         US13EmployeeManageAccountsPage.descriptionElement.sendKeys(description);
     }
@@ -60,39 +64,44 @@ public class US_013stepDefinitions {
         US13EmployeeManageAccountsPage.selectAccountStatusType(accountstatus);
     }
 
+    @When("click employee dropdown menu")
+    public void clickEmployeeDropdownMenu() {
+        US13EmployeeManageAccountsPage.employeeClickElement.click();
+    }
+
+
+
+    @And("^save form$")
+    public void save_form() {
+
+        US13EmployeeManageAccountsPage.saveButtonElement.click();
+    }
+
     @Then("^success massage display$")
-    public void success_massage_display() {
+    public void success_massage_display() throws InterruptedException {
+
+
         String actualSuccesMessage = pages.US13EmployeeManageAccountsPage.getAlert();
         String expectedSucessMessage = "translation-not-found[gmiBankBackendApp.tPAccount.created]";
 
         Assert.assertEquals(actualSuccesMessage, expectedSucessMessage);
     }
 
-    @And("^save form$")
-    public void save_form() {
-        US13EmployeeManageAccountsPage.saveButtonElement.click();
-    }
 
 
-    @Then("navigate to home page")
-    public void navigateToHomePage() {
-        US13EmployeeManageAccountsPage.headerHomeButtonElement.click();
-    }
-
-    @Then("error box content")
-    public void errorBoxContent() {
-
-    }
 
     @But("^error box content")
     public void error_box_content_() throws Throwable {
 
-            Assert.assertTrue(US13EmployeeManageAccountsPage.blankBalanceErrorElement.isDisplayed());
+        Assert.assertTrue(US13EmployeeManageAccountsPage.blankBalanceErrorElement.isDisplayed());
 
-            Assert.assertTrue(US13EmployeeManageAccountsPage.descriptionInvalidElement.isDisplayed());
+        Assert.assertTrue(US13EmployeeManageAccountsPage.descriptionInvalidElement.isDisplayed());
 
-        }
     }
+
+
+
+}
 
 
 

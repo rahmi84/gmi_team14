@@ -1,4 +1,5 @@
 
+
   Feature: Password segment on Homepage should be editable
 
     Background:User sign-in with valid credential and navigate to the password page
@@ -7,21 +8,21 @@
       Scenario: The old password should not be used
          When Click the current password box
         Then The current password box must be editable
-        When Enter the current password
+        When Enter the current password "Team14_new_user"
         And Click the new password box
         Then The new password box must be editable
-        And  Enter the one of the old password as new one
+        And  Enter the one of the old password as new one "fgffjk"
         When Click the new password confirmation box
-        Then The new password box must be editable
-        And  Enter the same old password you just entered
+        Then The new password confirmation box must be editable
+        And  Enter the one of the old password as new one "fgffjk"
         When Click the save button
         Then you should see the error message "An error has occured.The password could not be changed"
 
   @TC_02
   Scenario: The new password should be confirmed
-    When Enter the current password
-    And Enter the new password
-    And Enter the new password to the confirmation box
+    When Enter the current password "Team14_new_user"
+    And Enter the new password "hkhklkl"
+    And Enter the new password to the confirmation box "hkhklkl"
     And Click the save button
     Then you should see the valid message "Password changed"
 
@@ -126,13 +127,14 @@
     @TC_18
     Scenario:The system should not accept the password with space
       When I used space in the new password
+      And Click the new password confirmation box
       Then the password should not be accepted
 
     @TC_19
-    Scenario:
+    Scenario:The password should not be empty
       When I left the new password empty
-      And  Click new confirmation box
-      Then I have to see error message "Your password is required"
+      And  Click the new password confirmation box
+      Then I have to see error message "Your password is required."
 
 
 

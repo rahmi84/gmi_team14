@@ -51,3 +51,4 @@ public class US9US10US11EmployeeCreateOrEditACustomerPage {
     @FindBy(xpath = "//button[@id=\"save-entity\"]")
     public WebElement saveBox;
 }
+
