@@ -13,30 +13,8 @@ public class US15CustomerMyAccountPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(xpath = "//li[@id='account-menu']")
-    public WebElement menuButton;
-
-    @FindBy(xpath= "//span[.='Sign in']")
-    public WebElement signIn;
-
-    @FindBy(xpath = "//input[@name='username']")
-    public WebElement username;
-
-
-    @FindBy(xpath = "//input[@name='password']")
-    public WebElement password;
-
-    @FindBy(xpath = "//button[@type='submit']")
-    public WebElement submitSignInButton;
-
-    @FindBy(xpath = "//span[.='Cancel']")
-    public WebElement cancelButton;
-
     @FindBy(xpath = "//*[@id='account-menu']/a/span")
     public WebElement usernameValidate ;
-
-    @FindBy(xpath = "//*[@id='login-title']/button/span")
-    public WebElement logoutButton;
 
     @FindBy(xpath = "//*[@id='account-menu']/div/a[3]/span")
     public WebElement singOutButton;
@@ -58,5 +36,8 @@ public class US15CustomerMyAccountPage {
 
     @FindBy(xpath = "//tbody/tr/td[5]")
     public List<WebElement> transactions;
+
+    @FindBy(xpath = "(//button[@class='btn btn-success btn-sm'])[2]")
+    public WebElement viewTransactionButton2;
 
 }
