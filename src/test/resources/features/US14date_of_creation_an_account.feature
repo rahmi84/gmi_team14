@@ -1,25 +1,26 @@
+@db
+Feature: Accounts of customer
+  Background: Employee gets to page he will work
+    Given User signs in as employee to system
+    And user clicks on My Operations
+    And user clicks on Manage Accounts
 
 
+  Scenario: The date cannot be typed earlier, in the past, at the time of creation an account
+    And user clicks on the Create a new Account
+    And user enter the "Team14 account" as Description
+    And user enter the 9999999 as Balance
+    When user enter the the creation date as "01/01/2019" and creation time as "01:01 AM"
+    And user clickc on account Save button
+    Then user sees green success message on the screen
 
-Feature: Date should be created ont he time of account creation
 
+  Scenario:The date should be created as month, day, year, hour and minute
+    When user enter the the creation date as "21/32/2019" and creation time as "22:29 AM"
 
-  Background: user signs in in as employee and goes to account creation
-      When employee goes to endpoint
-    When signs in as employee
-    When clicks on myOperations
-    When selects Manage Accounts
-    And clicks on create a new account
-Scenario Outline: Creation time of an account cant be earlier or later
-
-  When user fills description
-  When user fills balance
-  When user fills account Type
-  When user fills status type
-  When user fills "<create date>"
-  When user fills "<description>"
-  And user clicks on save
-
+    Scenario: There user can choose an account created on manage accounts
+      When user goes manage accounts page
+      And clicks on user id
 
 
 
