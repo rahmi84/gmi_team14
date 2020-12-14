@@ -14,6 +14,11 @@ import org.junit.runner.RunWith;
         glue = "stepdefinitions",
 
 
+      tags = "@db",
+        dryRun = false
+
+
+
       tags = "@US07",
       dryRun = false
 
@@ -27,6 +32,7 @@ import org.junit.runner.RunWith;
         //  tags = "@db",
 
        // dryRun = true
+r
 
 )
 public class RunnerGMI {
