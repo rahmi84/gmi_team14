@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "stepdefinitions",
 
-     //  tags = "@db",
+        tags="@US15_SmokeTest",
         dryRun = false
 
         //  tags = "@db",
