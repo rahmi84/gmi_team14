@@ -1,34 +1,30 @@
 @employee
+  Feature: new employee account create functionality
 
-Feature: new employee account create functionality
 
-
- Background: User sign-in with valid credential and navigate to the application home page
+Scenario: : User sign-in with valid credential and navigate to the application home page
     Given login  as employee
     Then user click  create a new account
 
 
 
 
-#==============AC3=  User can select an account type as CHECKING, SAVING, CREDIT_CARD or INVESTING==================
-#==========AC4=Account status should be defined as ACTIVE, SUSPENDED or CLOSED================
-# =======AC5 User can select an employee from the drop-down=================================
 
-     #    there is a bug ,just there is 1 option to choose from dropdown and it is automatically chosen.
 
-  @HappyPath
+
+
+  @TC01-employee
   Scenario Outline: employee creates new  account with  Account Type and Account Status combinations
-   Given enter a <Description>
+    Then user click  create a new account
+    And enter a <Description>
     When enter balance as <Balance>
     When select <Account Type> account type
     When select account status <Account Status>
-    When click employee dropdown menu
     And save form
-    Then success massage display
+    Then  Success message is displayed
 
 
 
-     #    there is a bug.SUSPENDED is typed wrong at the Account Status dropdown menu (SUESPENDED)
 
     Examples:
       | Description | Balance | Account Type | Account Status |
@@ -47,16 +43,17 @@ Feature: new employee account create functionality
 
 
 
-#AC2=============== User should provide a balance for the first time account creation as Dollar=========================
-  @unhappyPath
+    @TC-02employee
   Scenario Outline:  employee creates new  account with different balance -Negative path
+    Then user click  create a new account
     When enter a <Description>
     When enter balance as <Balance>
     When select <Account Type> account type
     When select account status <Account Status>
     When click employee dropdown menu
     And save form
-    Then success massage display
+    Then  Success message is displayed
+
 
 
     Examples:
@@ -66,26 +63,16 @@ Feature: new employee account create functionality
       | TEST14      | -0      | CHECKING     | ACTIVE         |
       | TEST15      | +0      | CHECKING     | ACTIVE         |
       | TEST16      | -1      | CHECKING     | ACTIVE         |
-
-#    there is a bug ..Balance  does not allow to enter double and negative double datas (10.23  and -10.23)
-      | TEST17      | 10.23   | CHECKING     | ACTIVE         |
-      | TEST18      | -10.23  | CHECKING     | ACTIVE         |
+#      | TEST17      | 10.23   | CHECKING     | ACTIVE         |
+#      | TEST18      | -10.23  | CHECKING     | ACTIVE         |
 
 
-#AC1========================User should create a description for the new account and it cannot be blank======================
 
-  @someBlankData
+  @TC-03employee
   Scenario: employee creates new account with blank description or/and balance
+    Given user click  create a new account
     And save form
     But error box content
-
-
-
-
-
-
-
-
 
 
 

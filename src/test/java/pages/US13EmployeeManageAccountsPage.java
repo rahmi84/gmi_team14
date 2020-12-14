@@ -1,11 +1,10 @@
 package pages;
 
-import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-import utilities.ConfigReader;
 import utilities.Driver;
 
 public class US13EmployeeManageAccountsPage {
@@ -34,7 +33,8 @@ public class US13EmployeeManageAccountsPage {
     @FindBy(xpath = "  //select[@id='tp-account-employee']")
     public WebElement employeeClickElement;
 
-
+   @FindBy(css = "[class='Toastify__toast-body']")
+   public WebElement saveSuccessMessage;
 
     @FindBy(xpath = "//span[text()='Save']")
     public WebElement saveButtonElement;
@@ -42,8 +42,6 @@ public class US13EmployeeManageAccountsPage {
     @FindBy(css = "input.is-invalid.form-control")
     public WebElement blankBalanceErrorElement;
 
-    @FindBy(css = "[data-icon='home']")
-    public WebElement headerHomeButtonElement;
 
     //////////////////////////////MY METHODS//////////////////////////////////////////////////
 
@@ -57,12 +55,17 @@ public class US13EmployeeManageAccountsPage {
         select.selectByValue(accountStatusType);
     }
 
-
-    public static String getAlert(){
-        return Driver.getDriver().switchTo().alert().getText();
+    /**
+     * jsGetText method use java script command to capture success message
+     * @param element
+     * @param
+     * @return
+     */
+    public static String JsGetText(WebElement element) {
+        JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
+        return jse.executeScript("return arguments[0].innerText", element).toString();
+//        return jse.executeScript("return arguments[0].innerHtml", element).toString();
     }
-
-
     }
 
 
