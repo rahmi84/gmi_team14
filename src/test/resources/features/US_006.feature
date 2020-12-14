@@ -5,23 +5,18 @@ Feature: User info segment (User Settings) should be editable on Homepage
   @TCUs06-1
   Scenario: There should be user info "firstname, lastname, email and language" on the page
     When Click the current firstname box
-    And Check firstname box that must be filled
     And Get the firstname from firstname box
     When Click the current lastname box
-    And Check lastname box that must be filled
     And Get the lastname from lastname box
-    When Click the current email box
-    And Check email box that must be filled
+    When Click current email box
     And Get the email from email box
-    When Click the current language box
-    And Check language box that must be show English or Turkish
     And Get the current language from language box
+    Then Verify all boxes are not null
 
   @TCUs06-2
   Scenario:There should be 2 languages available "English and Turkish"
     When Click the language dropdown menu
     And Get the languages
-    And Check if there is another language
     Then Verify the languages which is in dropdown menu
 
   @TCUs06-3
