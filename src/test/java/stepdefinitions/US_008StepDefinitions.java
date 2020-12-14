@@ -11,6 +11,7 @@ public class US_008StepDefinitions {
     US08PasswordSegmentPage us08PasswordSegmentPage=new US08PasswordSegmentPage();
     @Given("I am at the user password page")
     public void i_am_at_the_user_password_page() {
+
         US08PasswordSegmentPage.landMeOnPasswordChangeMenu("User");
     }
 
