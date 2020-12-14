@@ -293,12 +293,8 @@ public class US_008StepDefinitions {
 
     @Then("the password should not be accepted")
     public void the_password_should_not_be_accepted() {
-        try {
             Assert.assertFalse(us08PasswordSegmentPage.newPasswordInvalidFeedback.isDisplayed());
-        } catch (Exception e) {
-        } finally {
-                US08PasswordSegmentPage.logout(); }
-        }
+    }
 
     @When("I left the new password empty")
     public void i_left_the_new_password_empty() {
