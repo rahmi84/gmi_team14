@@ -10,6 +10,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.*;
+import pages.US04SignInPage;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -344,6 +345,62 @@ public class Driver {
                 return driver.findElement(locator);
             }
         });
+    }
+
+    public static void loginAll(String string) {
+        US04SignInPage signIn = new US04SignInPage();
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        Driver.clickWithTimeOut(signIn.menuButton, 4);
+        Driver.clickWithTimeOut(signIn.signIn, 4);
+        switch (string) {
+            case "employee":
+                Driver.wait(1);
+                signIn.username.sendKeys(ConfigReader.getProperty("EmployeeUsername"));
+                Driver.wait(1);
+                signIn.password.sendKeys(ConfigReader.getProperty("EmployeePassword"));
+                Driver.wait(1);
+                signIn.submitSignInButton.submit();
+                Driver.wait(1);
+                break;
+            case "customer":
+                Driver.wait(1);
+                signIn.username.sendKeys(ConfigReader.getProperty("CustomerUsername"));
+                Driver.wait(1);
+                signIn.password.sendKeys(ConfigReader.getProperty("CustomerPassword"));
+                Driver.wait(1);
+                signIn.submitSignInButton.submit();
+                Driver.wait(1);
+                break;
+            case "admin":
+                Driver.wait(1);
+                signIn.username.sendKeys(ConfigReader.getProperty("AdminUsername"));
+                Driver.wait(1);
+                signIn.password.sendKeys(ConfigReader.getProperty("AdminPassword"));
+                Driver.wait(1);
+                signIn.submitSignInButton.submit();
+                Driver.wait(1);
+                break;
+            case "user":
+                Driver.wait(1);
+                signIn.username.sendKeys(ConfigReader.getProperty("UserUsername"));
+                Driver.wait(1);
+                signIn.password.sendKeys(ConfigReader.getProperty("UserPassword"));
+                Driver.wait(1);
+                signIn.submitSignInButton.submit();
+                Driver.wait(1);
+                break;
+
+            case "temp":
+                Driver.wait(1);
+                signIn.username.sendKeys(ConfigReader.getProperty("us8username"));
+                Driver.wait(1);
+                signIn.password.sendKeys(ConfigReader.getProperty("us8userpassword"));
+                Driver.wait(1);
+                signIn.submitSignInButton.submit();
+                Driver.wait(1);
+                break;
+        }
+
     }
 
 }
