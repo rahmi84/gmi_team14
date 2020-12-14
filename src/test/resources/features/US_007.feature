@@ -6,24 +6,22 @@ Feature: System should not allow to make updates with invalid credentials
   @TCUs07-1
   Scenario Outline: Email id cannot contain just digits or chars without "@" sign or ".com" extension
     When Click the current email box
-    And Delete "<Current email>"
     And Send key "<New email>"
     And Click save button to see error message
     Then Verify the error message
     Examples:
-      | Current email | New email |
-      | abc@gmail.com | !!@gmail.com  |
-      | abc@gmail.com | a@l.com  |
-      | abc@gmail.com | a@l.com  |
-      | abc@gmail.com | .@5.com  |
-      | abc@gmail.com | b@a.c  |
-      | abc@gmail.com | b@a.5  |
-      | abc@gmail.com | b@a.!  |
+      | New email |
+      | !!@gmail.com |
+      | a@l.com|
+      | a@l.com|
+      | .@5.com|
+      | b@a.c  |
+      | b@a.5  |
+      | b@a.!  |
   @TCUs07-2
   Scenario:There should not be an option of any other language other than English or Turkish
     When Click the language box
     And Select from dropdown menu Turkish and English options
-    And Check if it is another option
     Then Verify  languages which is in dropdown menu
 
   @TCUs07-3

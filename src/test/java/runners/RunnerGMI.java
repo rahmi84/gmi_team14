@@ -13,10 +13,19 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "stepdefinitions",
 
+
+      tags = "@US07",
+      dryRun = false
+
+
+    //      tags = "@US06",
+
         tags="@US15_SmokeTest",
         dryRun = false
 
+
         //  tags = "@db",
+
        // dryRun = true
 
 )
