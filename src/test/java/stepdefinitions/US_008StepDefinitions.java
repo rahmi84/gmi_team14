@@ -103,6 +103,7 @@ public class US_008StepDefinitions {
 
     @Then("password strength should be one bar")
     public void password_strength_should_be_one_bar() {
+<<<<<<< HEAD
         try {
             Assert.assertEquals("background-color: rgb(255, 0, 0);", us08PasswordSegmentPage.passwordStrenghBar.get(0).getAttribute("style"));
             Assert.assertEquals("background-color: rgb(221, 221, 221);", us08PasswordSegmentPage.passwordStrenghBar.get(1).getAttribute("style"));
@@ -110,6 +111,10 @@ public class US_008StepDefinitions {
         }finally {
            US08PasswordSegmentPage.logout();
         }
+=======
+        Assert.assertEquals("background-color: rgb(255, 0, 0);",us08PasswordSegmentPage.passwordStrenghBar.get(0).getAttribute("style"));
+        Assert.assertEquals("background-color: qrgb(221, 221, 221);",us08PasswordSegmentPage.passwordStrenghBar.get(1).getAttribute("style"));
+>>>>>>> master
     }
 
     @When("I entered the new password with just upper-case chars between four and six")
