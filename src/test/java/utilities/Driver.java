@@ -389,6 +389,16 @@ public class Driver {
                 signIn.submitSignInButton.submit();
                 Driver.wait(1);
                 break;
+
+            case "temp":
+                Driver.wait(1);
+                signIn.username.sendKeys(ConfigReader.getProperty("us8username"));
+                Driver.wait(1);
+                signIn.password.sendKeys(ConfigReader.getProperty("us8userpassword"));
+                Driver.wait(1);
+                signIn.submitSignInButton.submit();
+                Driver.wait(1);
+                break;
         }
 
     }
