@@ -14,11 +14,18 @@ import org.junit.runner.RunWith;
         glue = "stepdefinitions",
 
 
+
       // tags = "@db",
+
 
 
       tags = "@db",
         dryRun = false
+
+        //  tags = "@db",
+
+       // dryRun = true
+
 
 
 
