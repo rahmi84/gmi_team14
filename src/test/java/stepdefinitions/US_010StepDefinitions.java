@@ -22,6 +22,7 @@ public class US_010StepDefinitions {
         myClass.cityBox.sendKeys(string4);
         myClass.countrySelectBox.sendKeys(string5);
         myClass.stateBox.sendKeys(string6);
+        myClass.saveBox.click();
 
     }
 

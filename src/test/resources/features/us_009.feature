@@ -1,3 +1,4 @@
+@Seda
 Feature:Create a customer feature
 
   @US_009/TC_001

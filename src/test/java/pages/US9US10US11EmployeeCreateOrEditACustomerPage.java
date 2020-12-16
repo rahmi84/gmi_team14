@@ -52,7 +52,7 @@ public class US9US10US11EmployeeCreateOrEditACustomerPage {
     public WebElement accountsBox;
     @FindBy(xpath = "//input[@name=\"zelleEnrolled\"]")
     public WebElement zelleBox;
-    @FindBy(xpath = "//button[@id=\"save-entity\"]")
+    @FindBy(xpath = "//span[text()=\"Save\"]")
     public WebElement saveBox;
 }
 

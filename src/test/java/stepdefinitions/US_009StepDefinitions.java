@@ -75,14 +75,4 @@ public class US_009StepDefinitions {
         myClass.searchButton.click();
     }
 
-
-    @Then("Success message displayed")
-    public void success_message_displayed() {
-        Faker f = new Faker();
-     /*   String actualSuccessMessage = US9US10US11EmployeeCreateOrEditACustomerPage.getAlert();
-        String expectedSuccessMessage = "//div[@class=\"Toastify__toast-body\"]";
-        Assert.assertEquals(actualSuccessMessage,expectedSuccessMessage);
-
-      */
-    }
 }
