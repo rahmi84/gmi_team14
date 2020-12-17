@@ -28,13 +28,13 @@ public class US08PasswordSegmentPage {
     @FindBy(id = "newPassword")
     public WebElement newPassword;
 
-    @FindBy(xpath = " //*[@id=\"password-form\"]/div[2]/div")
+    @FindBy(xpath = "//*[@id=\"password-form\"]/div[2]/div")
     public WebElement newPasswordInvalidFeedback;
 
     @FindBy(id = "confirmPassword")
     public WebElement confirmPassword;
 
-    @FindBy(xpath = " //*[@id=\"password-form\"]/div[]/div")
+    @FindBy(xpath = " //div[@class=\"text-danger form-group\"][1]/div")
     public WebElement confirmNewPasswordInvalidFeedback;
 
     @FindBy(css = "button[type=\"submit\"]")
@@ -42,6 +42,10 @@ public class US08PasswordSegmentPage {
 
     @FindBy(css = "ul[id='strengthBar'] li")
     public List<WebElement> passwordStrenghBar;
+
+    @FindBy(xpath = "//strong[.='Password changed!']")
+    public WebElement alertbox;
+
 
 
 
@@ -55,36 +59,48 @@ public class US08PasswordSegmentPage {
     //Takes String as a parameter of Options " Admin  User  Manager  Customer
     public static void landMeOnPasswordChangeMenu(String role) {
 
-        signInAsrole(role);
+        Driver.loginAll(role);
         WebElement account = Driver.getDriver().findElement(By.cssSelector("li[id='account-menu']"));
+        Driver.waitForClickablility(account,5);
         account.click();
 
         WebElement passWord = Driver.getDriver().findElement(By.cssSelector("div[class=\"dropdown-menu dropdown-menu-right show\"] a:nth-child(2)"));
+        Driver.waitForClickablility(passWord,5);
         passWord.click();
 
     }
 
 
     //Takes String as a parameter of Options " Admin  User  Manager  Customer
-    public static void signInAsrole(String role) {
+    public static void loginwithRole(String role) {
+        US04SignInPage us04SignInPage=new US04SignInPage();
         Driver.getDriver().get(ConfigReader.getProperty("url"));
-        WebElement userphoto = Driver.getDriver().findElement(By.cssSelector("li[id='account-menu']"));
-        userphoto.click();
-        WebElement signin = Driver.getDriver().findElement(By.cssSelector("a[id='login-item']"));
-        signin.click();
-        WebElement username = Driver.getDriver().findElement(By.id("username"));
-        username.sendKeys(ConfigReader.getProperty(role + "Username"));
-        WebElement password = Driver.getDriver().findElement(By.id("password"));
-        password.sendKeys(ConfigReader.getProperty(role + "Password"));
-        WebElement signIn = Driver.getDriver().findElement(By.cssSelector(" button[type=\"submit\"]"));
-        signIn.click();
+        Driver.waitForClickablility(us04SignInPage.menuButton, 5);
+        us04SignInPage.menuButton.click();
+        Driver.waitForClickablility(us04SignInPage.signIn, 5);
+        us04SignInPage.signIn.click();
+        Driver.waitForVisibility(us04SignInPage.username,5);
+        us04SignInPage.username.sendKeys(ConfigReader.getProperty(role + "Username"));
+        us04SignInPage.password.sendKeys(ConfigReader.getProperty(role + "Password"));
+        us04SignInPage.submitSignInButton.click();
     }
 
-
+public  static void logout(){
+        MainAdminPage mainAdminPage=new MainAdminPage();
+        HomePage homePage=new HomePage();
+        Driver.waitForClickablility(mainAdminPage.accountMenu,5);
+        mainAdminPage.accountMenu.click();
+        Driver.waitForClickablility(mainAdminPage.drpSignOut,5);
+        mainAdminPage.drpSignOut.click();
+        homePage.clickHome.click();
+        Driver.wait(2);
+    }
     //4type
     public String passwordValidWithEverything=faker.internet().password(7,40,true,true,true);
     public String passwordValidWithEverythingBtw4_6=faker.internet().password(4,6,true,true,true);
     public String passwordValidWithEverythingBtw1_3=faker.internet().password(1,3,true,true,true);
+    public String passwordValidWithEverythingandspace=" "+faker.internet().password(3,40,true,true,true);
+    public String passordempty="";
     // 3 type
     public String passwordValidWithNoDigit=faker.internet().password(7,40,true,true,false);
     public String passwordValidWithNoChar=faker.internet().password(7,40,true,false,true);
