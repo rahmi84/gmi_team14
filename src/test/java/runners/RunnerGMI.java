@@ -14,8 +14,22 @@ import org.junit.runner.RunWith;
         glue = "stepdefinitions",
 
 
-      tags = "@US_23",
+
+
+      // tags = "@db",
+
+
+
+      tags = "@db",
         dryRun = false
+
+        //  tags = "@db",
+
+       // dryRun = true
+
+
+
+
 
 )
 public class RunnerGMI {
