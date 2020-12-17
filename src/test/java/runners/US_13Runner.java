@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
             glue = "stepdefinitions",
 
 
-            tags = "@employee",
+            tags = "@AllCustomerApi",
             dryRun = false
 
     )
