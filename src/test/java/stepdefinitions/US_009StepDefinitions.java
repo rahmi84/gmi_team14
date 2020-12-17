@@ -17,7 +17,7 @@ public class US_009StepDefinitions {
     US04SignInPage signPage = new US04SignInPage();
     US01RegisterPage registerPage = new US01RegisterPage();
     US13EmployeeManageAccountsPage us13 = new US13EmployeeManageAccountsPage();
-
+    MainEmployeePage main = new MainEmployeePage();
 
     @Given("Navigate to GMI Bank Application")
     public void navigate_to_GMI_Bank_Application() {
@@ -57,7 +57,7 @@ public class US_009StepDefinitions {
     @Then("Go to manage customers page")
     public void go_to_manage_customers_page() {
 
-        us13.manageOperationElement.click();
+        main.myOperationsDropdown.click();
         myClass.manageCustomerButton.click();
 
     }
