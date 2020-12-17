@@ -11,7 +11,6 @@ public class US_010StepDefinitions {
 
     US9US10US11EmployeeCreateOrEditACustomerPage myClass = new US9US10US11EmployeeCreateOrEditACustomerPage();
     US13EmployeeManageAccountsPage us13 = new US13EmployeeManageAccountsPage();
-    US01RegisterPage registerPage = new US01RegisterPage();
 
     @Given("I should provide customer all informations as {string} , {string} , {string} , {string} , {string} , {string}")
     public void i_should_provide_custumer_all_informations_as(String string, String string2, String string3, String string4, String string5, String string6) {

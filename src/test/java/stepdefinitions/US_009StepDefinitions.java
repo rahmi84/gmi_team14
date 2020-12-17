@@ -15,7 +15,7 @@ public class US_009StepDefinitions {
 
     US9US10US11EmployeeCreateOrEditACustomerPage myClass = new US9US10US11EmployeeCreateOrEditACustomerPage();
     US04SignInPage signPage = new US04SignInPage();
-    US01RegisterPage registerPage = new US01RegisterPage();
+    US01$2RegisterPage registerPage = new US01$2RegisterPage();
     US13EmployeeManageAccountsPage us13 = new US13EmployeeManageAccountsPage();
     MainEmployeePage main = new MainEmployeePage();
 
@@ -36,16 +36,16 @@ public class US_009StepDefinitions {
     @Then("Customer provide all informations as as {string} , {string} , {string} , {string} , {string} , {string} , {string} , {string} , {string} and register")
     public void customer_provide_all_informations_as_as_and_register(String string, String string2, String string3, String string4, String string5, String string6, String string7, String string8, String string9) throws InterruptedException {
 
-        registerPage.ssnBox.sendKeys(string);
-        registerPage.firstNameBox.sendKeys(string2);
-        registerPage.lastNameBox.sendKeys(string3);
-        registerPage.adressBox.sendKeys(string4);
-        registerPage.mobilePhoneNumberBox.sendKeys(string5);
-        registerPage.usernameBox.sendKeys(string6);
-        registerPage.emailBox.sendKeys(string7);
-        registerPage.newPasswordBox.sendKeys(string8);
-        registerPage.newPasswordConfirmationBox.sendKeys(string9);
-        registerPage.registerButton.click();
+        myClass.ssnBox.sendKeys(string);
+        myClass.firstNameBox.sendKeys(string2);
+        myClass.lastNameBox.sendKeys(string3);
+        myClass.addressBox.sendKeys(string4);
+        myClass.mobilePhoneNumberBox.sendKeys(string5);
+        myClass.username.sendKeys(string6);
+        myClass.emailBox.sendKeys(string7);
+        myClass.newPasswordBox.sendKeys(string8);
+        myClass.newPasswordConfirmation.sendKeys(string9);
+        myClass.registerButton.click();
     }
 
     @When("Sign in as a {string}")
