@@ -1,8 +1,14 @@
 package utilities;
 import com.google.common.base.Function;
+import com.google.gson.JsonObject;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -13,15 +19,15 @@ import org.openqa.selenium.support.ui.*;
 import pages.US04SignInPage;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static io.restassured.RestAssured.*;
 
 public class Driver {
+    protected static RequestSpecification spec01;
 
     private Driver(){ }
     static WebDriver driver;
@@ -400,6 +406,24 @@ public class Driver {
                 Driver.wait(1);
                 break;
         }
+
+    }
+    public static void changeCountry(Integer id,String country,String states){
+        spec01=new RequestSpecBuilder().
+                setBaseUri("https://www.gmibank.com/api/tp-countries").
+                build();
+       //spec01.pathParam("ID",id);
+
+        Map<String,Object> req= new HashMap<>();
+        req.put("id",id);
+        req.put("name",country);
+        req.put("states",states);
+       Response response=given().contentType(ContentType.JSON).
+                auth().oauth2(ConfigReader.getProperty("token")).
+                  spec(spec01).
+                body(req.toString()).when().put();
+       response.prettyPrint();
+
 
     }
 
