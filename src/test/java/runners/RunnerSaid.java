@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         glue = "stepdefinitions",
 
 
-        tags = "@employee",
+        tags = "@US_21",
         dryRun = false
 
 )
