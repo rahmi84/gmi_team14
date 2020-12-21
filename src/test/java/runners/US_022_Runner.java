@@ -12,11 +12,8 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "stepdefinitions",
 
-        //  tags = "@db",
+         tags = "@US_22DenemeSmokeTest",
         dryRun = false
-
-        //  tags = "@db",
-        // dryRun = true
 
 )
 public class US_022_Runner {
