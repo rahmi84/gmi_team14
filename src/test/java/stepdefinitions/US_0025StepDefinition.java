@@ -1,0 +1,66 @@
+package stepdefinitions;
+
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import org.junit.Assert;
+import utilities.ConfigReader;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static io.restassured.RestAssured.*;
+
+
+public class US_0025StepDefinition {
+    Response response;
+    JsonPath json;
+    Map<String, Object> expectedcountry = new HashMap<>();
+
+    @Given("create a country with map and send to end point{string}")
+    public void createACountryWithMapAndSendToEndPoint(String endpoint) {
+        expectedcountry.put("id", " ");
+        expectedcountry.put("name", "Busan");
+        expectedcountry.put("states", null);
+        System.out.println(expectedcountry);
+        Response expectedCountry =  response = given()
+                .auth()
+                .oauth2(ConfigReader.getProperty("token"))
+                .contentType(ContentType.JSON)
+                .when()
+                .body(expectedcountry)
+                .post(endpoint);
+        response.prettyPrint();
+
+        expectedCountry    .then()
+                           .contentType(ContentType.JSON)
+                           .statusCode(201);
+        expectedCountry.prettyPrint();
+    }
+
+
+    @And("get response and store response with JsonPath using endpoint{string}")
+    public void getResponseAndStoreResponseWithJsonPathUsingEndpoint(String url) {
+
+
+         response = given()
+                              .auth()
+                              .oauth2(ConfigReader.getProperty("token"))
+                              .contentType(ContentType.JSON)
+                              .get(url);
+        response.prettyPrint();
+        json = response.jsonPath();
+
+    }
+
+    @Then("validate the country that created before")
+    public void validate_the_country_that_created_before() {
+        String id = json.getString("id");
+        if (id != null) {
+            Assert.assertTrue("country is exist",id.contains((CharSequence)expectedcountry.get("id")));
+        }
+    }
+    }

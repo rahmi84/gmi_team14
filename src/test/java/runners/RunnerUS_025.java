@@ -7,67 +7,14 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
+        strict = true,
         plugin = {"html:target/default-cucumber-reports",
                 "json:target/json-reports/cucumber.json",
                 "junit:target/xml-report/cucumber.xml"},
         features = "src/test/resources/features",
         glue = "stepdefinitions",
-
-
-
-      tags = "@US16",
-
-
-//<<<<<<< HEAD
-//        tags = "@Seda",
-
-//
-//
-//      // tags = "@db",
-//
-//
-//
-//      tags = "@db",
-
-//        dryRun = false
-
-
-        //  tags = "@db",
-
-       // dryRun = true
-
-
-
-
-
-         tags = "@db",
-
-
-
-
-
-
-         dryRun = true
-
-
-
-        //  tags = "@db",
-
-       // dryRun = true
-
-
-
-
-        dryRun = true
-
-
-
-
-
-
-)
-public class RunnerGMI {
-
+         tags = "@US_025",
+        dryRun = false)
+public class RunnerUS_025 {
 
 }
-
