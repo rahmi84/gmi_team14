@@ -1,6 +1,4 @@
 package runners;
-
-
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
@@ -14,67 +12,9 @@ import org.junit.runner.RunWith;
         glue = "stepdefinitions",
 
 
-
-       tags = "@api",
-
-
-      tags = "@US16",
-
-
-     // tags = "@db",
+        tags = "@US_21",
         dryRun = false
 
-
-
-//        tags = "@Seda",
-
-//
-//
-//      // tags = "@db",
-//
-//
-//
-//      tags = "@db",
-
-//        dryRun = false
-
-
-        //  tags = "@db",
-
-       // dryRun = true
-
-
-
-
-
-         tags = "@db",
-
-
-
-
-
-
-         dryRun = true
-
-
-
-        //  tags = "@db",
-
-       // dryRun = true
-
-
-
-
-        dryRun = true
-
-
-
-
-
-
 )
-public class RunnerGMI {
-
-
+public class RunnerSaid {
 }
-
