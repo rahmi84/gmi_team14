@@ -50,33 +50,7 @@ public class US_26ApiStepDefinitions extends ApiUtil {
 
     }
 
-    @Given("user goes to end point {string}")
-    public void user_goes_to_end_point(String end_point) {
-//       response= given().contentType(ContentType.JSON).auth().
-//                oauth2(ConfigReader.getProperty("token")).
-//                when().get("https://www.gmibank.com/api/tp-countries");
-//        response.prettyPrint();
 
-
-     //  Driver.changeCountry(18937,"kayseri",null);
-//        spec01=new RequestSpecBuilder().
-//                setBaseUri("https://www.gmibank.com/api/tp-countries").
-//                build();
-//
-//
-//        Map<String,Object> req= new HashMap<>();
-//        req.put("id",18937);
-//        req.put("name","como");
-//        req.put("states",null);
-//
-//        Response response=given().
-//                contentType(ContentType.JSON).
-//                spec(spec01).
-//                auth().oauth2(ConfigReader.getProperty("token")).
-//                body(req).when().put();
-//        response.prettyPrint();
-
-    }
 
 
 
