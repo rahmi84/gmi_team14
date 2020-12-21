@@ -38,7 +38,7 @@ public class ApiStepDef {
                     .statusCode(200)
                     .extract()
                     .response();
-            // response.prettyPrint();
+             response.prettyPrint();
 
         }
 
