@@ -18,7 +18,7 @@ import static io.restassured.RestAssured.*;
 
 
 
-public class ApiStepDefinitions extends ApiUtil {
+public class US_26ApiStepDefinitions extends ApiUtil {
     Response response;
     Driver driver;
 
