@@ -15,55 +15,10 @@ import org.junit.runner.RunWith;
 
 
 
-      tags = "@US16",
+       tags = "@api",
 
 
-//<<<<<<< HEAD
-//        tags = "@Seda",
-
-//
-//
-//      // tags = "@db",
-//
-//
-//
-//      tags = "@db",
-
-//        dryRun = false
-
-
-        //  tags = "@db",
-
-       // dryRun = true
-
-
-
-
-
-         tags = "@db",
-
-
-
-
-
-
-         dryRun = true
-
-
-
-        //  tags = "@db",
-
-       // dryRun = true
-
-
-
-
-        dryRun = true
-
-
-
-
-
+        dryRun = false
 
 )
 public class RunnerGMI {
