@@ -1,6 +1,6 @@
 package utilities;
 import com.google.common.base.Function;
-import com.google.gson.JsonObject;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
@@ -412,17 +412,15 @@ public class Driver {
         spec01=new RequestSpecBuilder().
                 setBaseUri("https://www.gmibank.com/api/tp-countries").
                 build();
-       //spec01.pathParam("ID",id);
-
         Map<String,Object> req= new HashMap<>();
         req.put("id",id);
         req.put("name",country);
         req.put("states",states);
        Response response=given().contentType(ContentType.JSON).
-                auth().oauth2(ConfigReader.getProperty("token")).
-                  spec(spec01).
-                body(req.toString()).when().put();
-       response.prettyPrint();
+               spec(spec01).
+               auth().oauth2(ConfigReader.getProperty("token")).
+               body(req).when().put();
+      response.prettyPrint();
 
 
     }
