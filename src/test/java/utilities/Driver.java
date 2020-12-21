@@ -408,21 +408,6 @@ public class Driver {
         }
 
     }
-    public static void changeCountry(Integer id,String country,String states){
-        spec01=new RequestSpecBuilder().
-                setBaseUri("https://www.gmibank.com/api/tp-countries").
-                build();
-        Map<String,Object> req= new HashMap<>();
-        req.put("id",id);
-        req.put("name",country);
-        req.put("states",states);
-       Response response=given().contentType(ContentType.JSON).
-               spec(spec01).
-               auth().oauth2(ConfigReader.getProperty("token")).
-               body(req).when().put();
-      response.prettyPrint();
-
-
 
     public static void waitAndSendText(WebElement element, String text, int timeout) {
         for (int i = 0; i < timeout; i++) {
