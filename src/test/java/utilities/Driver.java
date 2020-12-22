@@ -409,7 +409,7 @@ public class Driver {
         }
 
     }
-<<<<<<< HEAD
+
     public static void changeCountry(Integer id,String country,String states) {
         spec01 = new RequestSpecBuilder().
                 setBaseUri("https://www.gmibank.com/api/tp-countries").
@@ -435,8 +435,7 @@ public class Driver {
                 }
             }
         }
-=======
->>>>>>> master
+
 
         public static String waitAndGetText (WebElement element,int timeout){
             String text = "";
@@ -451,7 +450,7 @@ public class Driver {
             return null;
         }
 
-        public static String waitForGetPageTitle (String title){
+        public static String waitForGetPageTitle (String title) {
             try {
                 WebDriverWait wait = new WebDriverWait(driver, 20);
                 wait.until(ExpectedConditions.titleContains(title));
@@ -460,22 +459,7 @@ public class Driver {
             }
             return driver.getTitle();
 
-<<<<<<< HEAD
-=======
-    public static String waitForGetPageTitle(String title) {
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, 20);
-            wait.until(ExpectedConditions.titleContains(title));
-        } catch (Exception e) {
-            System.out.println("some exception occurred  while getting title ");
 
->>>>>>> master
         }
-
-<<<<<<< HEAD
-    }
-=======
-
-
 }
->>>>>>> master
+
