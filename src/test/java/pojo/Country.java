@@ -18,7 +18,7 @@ public class Country {
         this.id = id;
     }
 
-    public String getName() {
+    public  String getName() {
         return name;
     }
 
@@ -32,5 +32,16 @@ public class Country {
 
     public void setStates(String states) {
         this.states = states;
+    }
+
+    public Country( String name, String states) {
+        this.name = name;
+        this.states = states;
+    }
+    public Country() {
+    }
+    @Override
+    public String toString() {
+        return "Country [id=" + id + ", name=" + name + ", states=" + states + "]";
     }
 }
