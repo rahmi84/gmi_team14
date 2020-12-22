@@ -1,6 +1,6 @@
 package stepdefinitions;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -8,11 +8,7 @@ import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Assert;
-import pojo.States;
 import utilities.ConfigReader;
-import utilities.ReadToTxt;
-import utilities.WriteToTxt;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +19,6 @@ import static io.restassured.RestAssured.*;
 
 public class US_022_StepDefinitions {
     Response response;
-    States[] states;
-    String filePath = "AllStatesData.txt";
     JsonPath json;
     List<Map<String,Object>> list;
 
@@ -47,57 +41,49 @@ public class US_022_StepDefinitions {
     }
 
     @Given("user sets the states to response using {string}")
-    public void user_sets_the_states_to_response_using(String statesUrl) {
-        response=given().headers(
-                "Authorization",
-                "Bearer "+ ConfigReader.getProperty("token"),
-                "Content-Type",
-                ContentType.JSON,
-                "Accept",
-                ContentType.JSON)
+    public void user_sets_the_states_to_response_using(String states_url) {
+        response=given().auth().oauth2(ConfigReader.getProperty("token"))
                 .when().
-                        get(statesUrl).
-                        then().
-                        contentType(ContentType.JSON).
-                        extract().
-                        response();
-        response.prettyPrint();
+                        get(states_url);
+        response.
+                then().
+                assertThat().
+                contentType(ContentType.JSON).
+                statusCode(200);
+
+ //       response.prettyPrint();
 
     }
 
-    @And("user deserialization all states to pojo")
-    public void user_deserialization_all_states_to_pojo() throws IOException {
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        states=objectMapper.readValue(response.asString(),States[].class);
-   //     list=response.as(ArrayList.class);
-        json=response.jsonPath();
+    @And("user deserialization all states Json to Java")
+    public void user_deserialization_all_states_Json_to_Java() throws IOException {
+
+        json = response.jsonPath();
+        list = response.as(ArrayList.class);
     }
-//
-//    @And("user saves the states to correspondent files")
-//    public void user_saves_the_states_to_correspondent_files() {
-//        WriteToTxt.saveAllStates(filePath,states);
 
-  //  }
 
-//    @Then("user validates the all states {int} by {int}")
-//    public void user_validates_the_all_states_by(Integer id, Integer states) {
-//        List<States> list = ReadToTxt.returnAllStates2(filePath);
-////        System.out.println(list.get(331).getId());
-//
-//    }
-
-    @Then("Verify state id {string} is {string}")
-    public void verify_state_id_is(String id, String state) {
+    @Then("Validate your created all states one by one")
+    public void Validate_your_created_all_states_one_by_one() {
 
         list= json.getList("$");
         System.out.println(list);
 
-        for(Map<String,Object> w: list){
-            if (w.get("name")!=null && w.get("name").equals("Lowa")){
-                Assert.assertEquals(59950,w.get("id"));
-                break;
+        for(Map<String,Object> w: list) {
+            if (w.get("name") != null && w.get("name").equals("Maine")) {
+                Assert.assertEquals(59949, w.get("id"));
             }
 
         }
+
+        for(Map<String,Object> w2: list) {
+            if (w2.get("name") != null && w2.get("name").equals("Lowa")) {
+                Assert.assertEquals(59950, w2.get("id"));
+            }
+
+        }
+
+
     }
+
 }

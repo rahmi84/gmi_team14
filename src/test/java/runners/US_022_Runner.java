@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "stepdefinitions",
 
-         tags = "@US_22DenemeSmokeTest",
+         tags = "@US_22SmokeTest",
         dryRun = false
 
 )

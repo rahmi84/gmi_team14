@@ -1,4 +1,4 @@
-@US_22DenemeSmokeTest
+@US_22SmokeTest
 Feature: System should allow to read states using api end point
 
   Scenario Outline: Get data from api end point and create the states
@@ -9,15 +9,9 @@ Feature: System should allow to read states using api end point
       | name | Maine  |
       | name | Lowa   |
 
-  @TC_22Api
-  Scenario: Read all states you created and validate them from your data set
+
+  @TC_22Api1
+  Scenario: Read your created all states and validate them one by one
     Given user sets the states to response using "https://www.gmibank.com/api/tp-states"
-    And user deserialization all states to pojo
-#    And user saves the states to correspondent files
-#    Then user validates the all states 1 by 1
-
-
-  @TC_22Api
-  Scenario: Read all customers you created and validate them 1 by 1
-    Then Verify state id "59949" is "Maine"
-#    Then Verify state id "59805" is "Lowa"
+    And user deserialization all states Json to Java
+    Then Validate your created all states one by one
