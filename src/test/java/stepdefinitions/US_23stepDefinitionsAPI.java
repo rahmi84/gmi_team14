@@ -3,12 +3,16 @@ package stepdefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.junit.Assert;
+import utilities.ApiUtil;
 import utilities.ConfigReader;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,16 +23,17 @@ public class US_23stepDefinitionsAPI {
     Response response;
     JsonPath jsonPath;
     List<Map<String, Object>> allApplcntData;
+    ApiUtil apiUtil= new ApiUtil();
     @Given("Use API end point for applicants {string}")
     public void use_API_end_point_for_applicants(String endPointUrl) {
 
-         response= given().
-                       accept(ContentType.JSON).
-                       auth().oauth2(ConfigReader.getProperty("token")).
+        response= given().
+                accept(ContentType.JSON).
+                auth().oauth2(ConfigReader.getProperty("token")).
                 when().get(endPointUrl);
 
-         response.then().assertThat().statusCode(200);
-         jsonPath=response.jsonPath();
+        response.then().assertThat().statusCode(200);
+        jsonPath=response.jsonPath();
     }
 
     @And("get all applicants' information as Deserialization")
@@ -44,20 +49,25 @@ public class US_23stepDefinitionsAPI {
     public void find_out_how_many_applicants_are_here_and_verify_it() {
         Integer actualApplcntscount=allApplcntData.size();
         System.out.println(actualApplcntscount);
-        Assert.assertEquals(1614,actualApplcntscount.intValue());
+        Assert.assertEquals(1659,actualApplcntscount.intValue());
+    }
+
+    @And("create a new country")
+    public void create_a_new_country() {
+     ApiUtil.createCountry(28654,"Ecuador","null");
     }
 
     @And("get all the information of the fifth applicant")
     public void get_all_the_information_of_the_fifth_applicant() {
-       allApplcntData.get(4);
+        allApplcntData.get(4);
     }
 
     @And("verify fifth applicant's ssn is {string} and address is {string}")
     public void verify_fifth_applicant_s_ssn_is_and_address_is(String expectedSsn ,String expectedAddress) {
-     String actualSsn= allApplcntData.get(4).get("ssn").toString();
-     Assert.assertEquals(expectedSsn,actualSsn);
-     String actualAddress=allApplcntData.get(4).get("address").toString();
-     Assert.assertEquals(expectedAddress,actualAddress);
+        String actualSsn= allApplcntData.get(4).get("ssn").toString();
+        Assert.assertEquals(expectedSsn,actualSsn);
+        String actualAddress=allApplcntData.get(4).get("address").toString();
+        Assert.assertEquals(expectedAddress,actualAddress);
     }
 
     @And("verify first customer's firstName {string} \\(us23)")
@@ -74,14 +84,14 @@ public class US_23stepDefinitionsAPI {
 
     @And("verify third customer's phoneNumber {string} \\(us23)")
     public void verify_third_customer_s_country_us23(String phoneNumber) {
-      String actualPhoneNumber=allApplcntData.get(2).get("mobilePhoneNumber").toString();
-      Assert.assertEquals(phoneNumber,actualPhoneNumber);
+        String actualPhoneNumber=allApplcntData.get(2).get("mobilePhoneNumber").toString();
+        Assert.assertEquals(phoneNumber,actualPhoneNumber);
     }
 
     @And("verify last customer's user email {string} \\(us23)")
     public void verify_last_customer_s_user_email_us23(String email) {
-    String actualEmail=allApplcntData.get(allApplcntData.size()-1).get("email").toString();
-    Assert.assertEquals(email,actualEmail);
+        String actualEmail=allApplcntData.get(allApplcntData.size()-1).get("email").toString();
+        Assert.assertEquals(email,actualEmail);
     }
 
 

@@ -405,6 +405,7 @@ public class Driver {
                 signIn.submitSignInButton.submit();
                 Driver.wait(1);
                 break;
+
         }
 
     }
@@ -439,9 +440,12 @@ public class Driver {
             wait.until(ExpectedConditions.titleContains(title));
         } catch (Exception e) {
             System.out.println("some exception occurred  while getting title ");
+
         }
         return driver.getTitle();
 
     }
+
+
 
 }
