@@ -38,45 +38,20 @@ public class US_26ApiStepDefinitions extends ApiUtil {
         req2.put("id",18946);
         req2.put("name","kenya");
         req2.put("states",null);
+        spec01.pathParam("id","18946");
         Response response=given().
                 spec(spec01).
                 auth().oauth2(ConfigReader.
                 getProperty("token")).
                 when().
-                get("/18946");
+                get("/{id}");
         Map<String ,Object>actual=response.as(HashMap.class);
-        Assert.assertEquals(req2.get("name"),actual.get("name").toString());
+        Assert.assertEquals(req2.get("name"),actual.get("name"));
 
 
     }
 
-    @Given("user goes to end point {string}")
-    public void user_goes_to_end_point(String end_point) {
-//       response= given().contentType(ContentType.JSON).auth().
-//                oauth2(ConfigReader.getProperty("token")).
-//                when().get("https://www.gmibank.com/api/tp-countries");
-//        response.prettyPrint();
 
-
-     //  Driver.changeCountry(18937,"kayseri",null);
-//        spec01=new RequestSpecBuilder().
-//                setBaseUri("https://www.gmibank.com/api/tp-countries").
-//                build();
-//
-//
-//        Map<String,Object> req= new HashMap<>();
-//        req.put("id",18937);
-//        req.put("name","como");
-//        req.put("states",null);
-//
-//        Response response=given().
-//                contentType(ContentType.JSON).
-//                spec(spec01).
-//                auth().oauth2(ConfigReader.getProperty("token")).
-//                body(req).when().put();
-//        response.prettyPrint();
-
-    }
 
 
 

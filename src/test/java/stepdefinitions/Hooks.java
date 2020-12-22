@@ -12,6 +12,7 @@ public class Hooks {
 //    @Before
 //    public void setUp(){
 //        //System.out.println("setUp Çalıştı.");
+<<<<<<< HEAD
 //    }
 //    @After
 //    public void tearDown(Scenario scenario) {
@@ -22,4 +23,22 @@ public class Hooks {
 //
 //    }
 
+=======
+//    }
+//    @After
+//    public void tearDown(Scenario scenario) {
+//        final byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
+//        if (scenario.isFailed()) {
+//            scenario.embed(screenshot, "image/png");
+//        }
+////<<<<<<< HEAD
+////        Driver.closeDriver();
+////=======
+////         Driver.closeDriver();
+////>>>>>>> master
+////    }
+//
+//    }
+//
+>>>>>>> master
 }

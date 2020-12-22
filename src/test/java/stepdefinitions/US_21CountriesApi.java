@@ -7,11 +7,30 @@ import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import pojo.Country;
+import utilities.ApiUtil;
 import utilities.ConfigReader;
+
+import java.io.IOException;
 
 import static io.restassured.RestAssured.*;
 
 public class US_21CountriesApi {
+
+    Response response;
+    String filePath=ConfigReader.getProperty("api_countries");
+    String bearerToken=ConfigReader.getProperty("token");
+    Country[] country;
+
+
+    @Given("user create a new country and sets response using api end point {string}")
+    public void user_create_a_new_country_and_sets_response_using_api_end_point(String string) {
+      ApiUtil.createCountry(null, "morocco", null);
+        System.out.println("===================================");
+      ApiUtil.callCountries();
+
+    }
+
+
 
     @Given("user read all countries and sets response using api end point {string}")
     public void user_read_all_countries_and_sets_response_using_api_end_point(String api_endpoint) {
@@ -26,16 +45,22 @@ public class US_21CountriesApi {
                 .statusCode(200)
                 .extract()
                 .response();
-        response.prettyPrint();
+       response.prettyPrint();
 
     }
 
     @Given("user deserialization countries data json to pojo")
-    public void user_deserialization_countries_data_json_to_pojo() {
+    public void user_deserialization_countries_data_json_to_pojo() throws IOException {
 
-        ObjectMapper objectMapper=new ObjectMapper();
+//        ObjectMapper objectMapper=new ObjectMapper();
+//        country=objectMapper.readValue(response.asString(),Country[].class);
+//        for (int i=0; i<country.length;i++){
+//            System.out.println("name"+" "+country[i].getName());
 
-    }
+        }
+
+
+
 
     @Then("user validates all countries data")
     public void user_validates_all_countries_data() {
