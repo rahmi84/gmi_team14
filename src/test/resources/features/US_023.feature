@@ -14,4 +14,4 @@ Feature:System should allow to read all Applicants using api end point
     And verify first customer's firstName "example" (us23)
     And verify second customer's lastName "firstuser" (us23)
     And verify third customer's phoneNumber "345-344-4357" (us23)
-    And verify last customer's user email "myron@hotmail.com" (us23)
+    And verify last customer's user email "jovita.green@hotmail.com" (us23)

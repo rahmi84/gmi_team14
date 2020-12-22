@@ -44,7 +44,7 @@ public class US_23stepDefinitionsAPI {
     public void find_out_how_many_applicants_are_here_and_verify_it() {
         Integer actualApplcntscount=allApplcntData.size();
         System.out.println(actualApplcntscount);
-        Assert.assertEquals(1614,actualApplcntscount.intValue());
+        Assert.assertEquals(1659,actualApplcntscount.intValue());
     }
 
     @And("get all the information of the fifth applicant")
