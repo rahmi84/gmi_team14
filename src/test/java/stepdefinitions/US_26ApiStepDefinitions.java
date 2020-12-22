@@ -38,14 +38,15 @@ public class US_26ApiStepDefinitions extends ApiUtil {
         req2.put("id",18946);
         req2.put("name","kenya");
         req2.put("states",null);
+        spec01.pathParam("id","18946");
         Response response=given().
                 spec(spec01).
                 auth().oauth2(ConfigReader.
                 getProperty("token")).
                 when().
-                get("/18946");
+                get("/{id}");
         Map<String ,Object>actual=response.as(HashMap.class);
-        Assert.assertEquals(req2.get("name"),actual.get("name").toString());
+        Assert.assertEquals(req2.get("name"),actual.get("name"));
 
 
     }
