@@ -33,22 +33,22 @@ public class US_21CountriesApi {
                 .statusCode(200)
                 .extract()
                 .response();
-     //   response.prettyPrint();
+       response.prettyPrint();
 
     }
 
     @Given("user deserialization countries data json to pojo")
     public void user_deserialization_countries_data_json_to_pojo() throws IOException {
 
-        ObjectMapper objectMapper=new ObjectMapper();
-        country=objectMapper.readValue(response.asString(),Country[].class);
-        for (int i=0; i<country.length;i++){
-            System.out.println("name"+" "+country[i].getName());
+//        ObjectMapper objectMapper=new ObjectMapper();
+//        country=objectMapper.readValue(response.asString(),Country[].class);
+//        for (int i=0; i<country.length;i++){
+//            System.out.println("name"+" "+country[i].getName());
 
         }
 
 
-    }
+
 
     @Then("user validates all countries data")
     public void user_validates_all_countries_data() {
