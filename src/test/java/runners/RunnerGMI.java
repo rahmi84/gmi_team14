@@ -13,11 +13,12 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "stepdefinitions",
 
-         tags = "@db",
 
 
-         dryRun = true
+       tags = "@api",
 
+
+        dryRun = false
 
 )
 public class RunnerGMI {

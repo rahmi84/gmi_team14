@@ -12,11 +12,9 @@ import org.junit.runner.RunWith;
         glue = "stepdefinitions",
 
 
-        tags = " @US_23",
+        tags = "@US_21",
         dryRun = false
+
 )
-
-public class RunnerFatmaAPI {
-
-
+public class RunnerSaid {
 }
