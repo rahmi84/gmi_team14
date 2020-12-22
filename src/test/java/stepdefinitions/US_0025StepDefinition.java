@@ -10,6 +10,7 @@ import org.junit.Assert;
 import utilities.ConfigReader;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static io.restassured.RestAssured.*;
@@ -18,20 +19,20 @@ import static io.restassured.RestAssured.*;
 public class US_0025StepDefinition {
     Response response;
     JsonPath json;
-    Map<String, Object> expectedcountry = new HashMap<>();
+    Map<String, Object> expectedcountryMap = new HashMap<String,Object>();
 
     @Given("create a country with map and send to end point{string}")
     public void createACountryWithMapAndSendToEndPoint(String endpoint) {
-        expectedcountry.put("id", " ");
-        expectedcountry.put("name", "Busan");
-        expectedcountry.put("states", null);
-        System.out.println(expectedcountry);
+        expectedcountryMap.put("id", " ");
+        expectedcountryMap.put("name", " Ulsan1");
+        expectedcountryMap.put("states", null);
+        System.out.println(expectedcountryMap);
         Response expectedCountry =  response = given()
                 .auth()
                 .oauth2(ConfigReader.getProperty("token"))
                 .contentType(ContentType.JSON)
                 .when()
-                .body(expectedcountry)
+                .body(expectedcountryMap)
                 .post(endpoint);
         response.prettyPrint();
 
@@ -58,9 +59,13 @@ public class US_0025StepDefinition {
 
     @Then("validate the country that created before")
     public void validate_the_country_that_created_before() {
-        String id = json.getString("id");
-        if (id != null) {
-            Assert.assertTrue("country is exist",id.contains((CharSequence)expectedcountry.get("id")));
-        }
+        List<Object> id = json.getList("id");
+       if (json.getString("id") != null) {
+            Assert.assertEquals(id.contains(expectedcountryMap.get("60130")));
+       }
     }
+//    String id = json.getString("id");
+//        if (id != null) {
+//        Assert.assertTrue("country is exist",id.contains((CharSequence)expectedcountry.get("id")));
+//    }
     }
