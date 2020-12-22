@@ -4,7 +4,6 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
-public class RunnerUS20 {
 
 
 
@@ -17,12 +16,11 @@ public class RunnerUS20 {
             glue = "stepdefinitions",
 
 
-            tags = "@db",
-            dryRun = false
+            tags = "@US_20api",
+            dryRun = true
     )
-    public class RunnerGMI {
-
+    public class RunnerUS20 {
 
     }
 
-}
+
