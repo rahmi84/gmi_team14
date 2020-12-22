@@ -7,6 +7,7 @@ import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import pojo.Country;
+import utilities.ApiUtil;
 import utilities.ConfigReader;
 
 import java.io.IOException;
@@ -19,6 +20,17 @@ public class US_21CountriesApi {
     String filePath=ConfigReader.getProperty("api_countries");
     String bearerToken=ConfigReader.getProperty("token");
     Country[] country;
+
+
+    @Given("user create a new country and sets response using api end point {string}")
+    public void user_create_a_new_country_and_sets_response_using_api_end_point(String string) {
+      ApiUtil.createCountry(null, "morocco", null);
+        System.out.println("===================================");
+      ApiUtil.callCountries();
+
+    }
+
+
 
     @Given("user read all countries and sets response using api end point {string}")
     public void user_read_all_countries_and_sets_response_using_api_end_point(String api_endpoint) {
