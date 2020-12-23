@@ -48,7 +48,7 @@ public class US_024StepDefinitions {
 
 
     @And("get response and store response with JsonPath using endpoint {string}")
-    public void getResponseAndStoreResponseWithJsonPathUsingEndpoint(String url) { response = given()
+    public void getResponseAndStoreResponseWithJsonPathUsingEndpoint(String url)  { response = given()
             .auth()
             .oauth2(ConfigReader.getProperty("token"))
             .contentType(JSON)
