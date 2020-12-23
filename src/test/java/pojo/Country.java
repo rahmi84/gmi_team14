@@ -6,15 +6,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Country {
 
-    private int id;
+    private String id;
     private String name;
     private String states;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -34,10 +34,12 @@ public class Country {
         this.states = states;
     }
 
-    public Country( String name, String states) {
+    public Country(String id, String name, String states) {
+        this.id = id;
         this.name = name;
         this.states = states;
     }
+
     public Country() {
     }
     @Override
