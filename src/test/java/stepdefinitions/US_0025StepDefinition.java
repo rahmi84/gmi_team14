@@ -48,14 +48,6 @@ public class US_0025StepDefinition {
         json = response.jsonPath();
     }
 
-    //    @And("validate the country that created before")
-//    public void validate_the_country_that_created_before() {
-//        String id = json.getString("id");
-//        System.out.println(id);
-//        if (id != null) {
-//            Assert.assertTrue("country is exist",id.contains("60767"));
-//        }
-//    }
     @Then("validate the country that created before")
     public void validate_the_country_that_created_before() {
         String id = json.getString("id");
@@ -67,15 +59,5 @@ public class US_0025StepDefinition {
             Assert.assertTrue("country is exist", id.contains(expectedjson.getString("id")));
         }
 
-
-//        @Then("delete the country that created before using end point{string} with extension{string}")
-//        public void deleteTheCountryThatCreatedBeforeUsingEndPointWithExtension (String endpoint, String id){
-//            Response expectedCountry = response = given()
-//                    .auth()
-//                    .oauth2(ConfigReader.getProperty("token"))
-//                    .contentType(ContentType.JSON)
-//                    .when()
-//                    .delete(endpoint + id);
-//        }
     }
 }
