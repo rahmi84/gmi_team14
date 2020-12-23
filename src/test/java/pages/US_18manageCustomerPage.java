@@ -25,7 +25,7 @@ public class US_18manageCustomerPage {
     public List<WebElement> viewCustomerInfolist;
 
 
-    @FindBy(xpath = "(//span[text()='Edit'][1])")
+    @FindBy(xpath = "//a[@href=\"/tp-customer/33854/edit?page=1&sort=id,asc\"]")
     public WebElement editButtonElement;
 
     @FindBy(xpath = "//form[@class=\"av-valid\"]")

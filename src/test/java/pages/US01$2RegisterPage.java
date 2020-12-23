@@ -4,8 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import utilities.Driver;
 import org.testng.asserts.SoftAssert;
+import utilities.Driver;
+
 
 import java.util.List;
 import java.util.Map;
