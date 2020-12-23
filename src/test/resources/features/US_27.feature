@@ -1,14 +1,13 @@
 @US_027
-Feature: US_27
+Feature: System should allow to create new states
 
-  Scenario Outline: Create a state
-    Given user sets the response using api end point "https://www.gmibank.com/api/tp-countries" and creates a state using "<idJson>" and "<nameJson>"
-    Examples: create a state
-      |idJson |nameJson|
-      |name   |California|
+  Scenario: post request to create new state one by one
+    Given user post  a new state to end point
+    When  user deserialization state data  json to java pojo
 
-  Scenario Outline: Delete a state
+
+  Scenario Outline:  delete states
     Given user deletes a state using endpoint "<endPoint>" and its extension "<id>"
-    Examples: delete a state
-      |endPoint                                  |id    |
-      |https://www.gmibank.com/api/tp-states/1803|/57080|
+    Examples: multiple states
+      | endPoint                              | id     |
+      | https://www.gmibank.com/api/tp-states | /60898 |

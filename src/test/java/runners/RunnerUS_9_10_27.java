@@ -15,14 +15,13 @@ import org.junit.runner.RunWith;
 
 
 
-       tags = "@api",
+        tags = "@US_027",
 
 
         dryRun = false
 
 )
-public class RunnerGMI {
+public class RunnerUS_9_10_27 {
 
 
 }
-
