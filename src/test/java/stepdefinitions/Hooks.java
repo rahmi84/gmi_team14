@@ -9,6 +9,7 @@ import utilities.Driver;
 
 public class Hooks {
 
+
     @Before
     public void setUp(){
         System.out.println("setUp Çalıştı.");
