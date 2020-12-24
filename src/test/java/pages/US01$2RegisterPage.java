@@ -30,7 +30,7 @@ public class US01$2RegisterPage {
     public WebElement registrationForm;
 
     @FindBy(xpath = "//input[@id='ssn']")
-    private WebElement ssn;
+    public WebElement ssn;
 
     @FindBy(xpath = "//input[@id='firstname']")
     public WebElement firstName;
