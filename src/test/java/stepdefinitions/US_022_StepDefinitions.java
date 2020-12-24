@@ -40,6 +40,8 @@ public class US_022_StepDefinitions {
 
     }
 
+
+
     @Given("user sets the states to response using {string}")
     public void user_sets_the_states_to_response_using(String states_url) {
         response=given().auth().oauth2(ConfigReader.getProperty("token"))
