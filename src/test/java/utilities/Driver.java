@@ -437,29 +437,66 @@ public class Driver {
         }
 
 
-        public static String waitAndGetText (WebElement element,int timeout){
-            String text = "";
-            for (int i = 0; i < timeout; i++) {
-                try {
-                    text = element.getText();
-                    return text;
-                } catch (WebDriverException e) {
-                    wait(1);
-                }
-            }
-            return null;
-        }
+//<<<<<<< HEAD
+    }
+//    public static void waitAndSendText(WebElement element, String text, int timeout) {
+//        for (int i = 0; i < timeout; i++) {
+//            try {
+//                element.sendKeys(text);
+//                return;
+//            } catch (WebDriverException e) {
+//                wait(1);
+//            }
+//        }
+//    }
+//
+//    public static String waitAndGetText(WebElement element, int timeout) {
+//        String text = "";
+//        for (int i = 0; i < timeout; i++) {
+//            try {
+//                text = element.getText();
+//                return text;
+//            } catch (WebDriverException e) {
+//                wait(1);
+//            }
+//        }
+//        return null;
+//    }
 
-        public static String waitForGetPageTitle (String title) {
-            try {
-                WebDriverWait wait = new WebDriverWait(driver, 20);
-                wait.until(ExpectedConditions.titleContains(title));
-            } catch (Exception e) {
-                System.out.println("some exception occurred  while getting title ");
-            }
-            return driver.getTitle();
-
-
-        }
-}
+//    public static String waitForGetPageTitle(String title) {
+//        try {
+//            WebDriverWait wait = new WebDriverWait(driver, 20);
+//            wait.until(ExpectedConditions.titleContains(title));
+//        } catch (Exception e) {
+//            System.out.println("some exception occurred  while getting title ");
+//        }
+//        return driver.getTitle();
+//    }
+//=======
+//        public static String waitAndGetText (WebElement element,int timeout){
+//            String text = "";
+//            for (int i = 0; i < timeout; i++) {
+//                try {
+//                    text = element.getText();
+//                    return text;
+//                } catch (WebDriverException e) {
+//                    wait(1);
+//                }
+//            }
+//            return null;
+//        }
+//
+//        public static String waitForGetPageTitle (String title) {
+//            try {
+//                WebDriverWait wait = new WebDriverWait(driver, 20);
+//                wait.until(ExpectedConditions.titleContains(title));
+//            } catch (Exception e) {
+//                System.out.println("some exception occurred  while getting title ");
+//            }
+//            return driver.getTitle();
+//
+//
+//        }
+//}
+//>>>>>>> master
 

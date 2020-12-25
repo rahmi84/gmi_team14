@@ -1,9 +1,6 @@
-@Seda
+@US_010
 Feature: Creating address of customer
-    @US_010/TC_001
-    @US_010/TC_002
-    @US_010/TC_003
-    @US_010/TC_004
+
 
     Scenario Outline:Address should be provided and cannot be left blank
     When Sign in as a "employee"
