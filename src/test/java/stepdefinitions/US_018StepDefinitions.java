@@ -112,4 +112,7 @@ public class US_018StepDefinitions {
             Assert.assertEquals(successMessageActual,successMessageExpected);
         }
 
+    @And("edit user info")
+    public void editUserInfo() {
     }
+}
