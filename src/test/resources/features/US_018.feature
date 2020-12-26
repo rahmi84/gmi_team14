@@ -1,3 +1,4 @@
+@us18
 Feature: System should allow Admin to manage a customer
 
  Scenario: US_018 customer account information populations
@@ -26,13 +27,14 @@ edit button there
   @US18_TC04
   Scenario:The Edit portal can allow user to create or update the user info
     When Click  edit button
+    And user create or update the user info for city
     And See all customer info populated
 
 
   @US18_TC05
   Scenario:User can delete a customer, but seeing a message if the user is sure about deletion
     When Click  delete button
-    And click delete confirmation box
+    And click delete on confirmation box
   Then verify customer is deleted
 
 ##  1-All customers should show up on manage customers module populating the account information of the customer

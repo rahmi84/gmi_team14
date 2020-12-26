@@ -11,9 +11,9 @@ public class US9US10US11EmployeeCreateOrEditACustomerPage {
     }
 
 
-
     @FindBy(xpath = "//span[text()=\"Register\"]")
     public WebElement registerCustomerButton;
+
     @FindBy(xpath = "//a[@href='/tp-customer']")
     public WebElement manageCustomerButton;
     @FindBy(id = "jh-create-entity")
@@ -52,7 +52,7 @@ public class US9US10US11EmployeeCreateOrEditACustomerPage {
     public WebElement accountsBox;
     @FindBy(xpath = "//input[@name=\"zelleEnrolled\"]")
     public WebElement zelleBox;
-    @FindBy(xpath = "//span[text()=\"Save\"]")
+    @FindBy(xpath = "//button[@id=\"save-entity\"]")
     public WebElement saveBox;
     @FindBy(xpath = "//input[@id='firstPassword']")
     public WebElement newPasswordBox;

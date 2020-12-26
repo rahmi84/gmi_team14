@@ -34,7 +34,7 @@ public class US15CustomerMyAccountPage {
     @FindBy(xpath = "(//button[@class='btn btn-success btn-sm'])[1]")
     public WebElement viewTransactionButton;
 
-    @FindBy(xpath = "//tbody/tr/td[6]")
+    @FindBy(xpath = "//tbody/tr/td[5]")
     public List<WebElement> transactions;
 
     @FindBy(xpath = "(//button[@class='btn btn-success btn-sm'])[2]")
