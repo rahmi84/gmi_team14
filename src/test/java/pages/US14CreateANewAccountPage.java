@@ -27,7 +27,20 @@ public class US14CreateANewAccountPage {
     public WebElement save;
     @FindBy(xpath = "//span[contains(text(),'Back')]")
     public WebElement back;
-
+    @FindBy(id = "entity-menu")
+    public WebElement myOperationsDropdown;
+    @FindBy(xpath = "//*[@id='entity-menu']/div/a[2]")
+    public WebElement drpManageAccounts;
+    @FindBy(xpath = "//*[@id=\'jh-create-entity\']/span")
+    public WebElement createANewAccount;
+    @FindBy(xpath = "//td[text()='translation-not-found[gmiBankBackendApp.tPAccount.created]']")
+    public WebElement accountCreated;
+    @FindBy(xpath = "//span[contains(text(),'Sign Out')]")
+    public WebElement drpSignOut;
+    @FindBy(xpath = "//span[contains(text(),'Tech14 Tech')]")
+    public WebElement employeemenu;
+    @FindBy(linkText = "51181")
+    public WebElement idOfCustomer;
 
 
 
