@@ -182,7 +182,8 @@
                 e.printStackTrace();
             }
         }
-        public static int getRowCount() throws Exception {
+        public static int getRowCount(String query) throws Exception {
+            executeQuery(query);
             resultSet.last();
             int rowCount = resultSet.getRow();
             return rowCount;
