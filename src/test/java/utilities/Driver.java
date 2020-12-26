@@ -1,8 +1,14 @@
 package utilities;
 import com.google.common.base.Function;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -13,22 +19,24 @@ import org.openqa.selenium.support.ui.*;
 import pages.US04SignInPage;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static io.restassured.RestAssured.*;
 
 public class Driver {
+    protected static RequestSpecification spec01;
 
-    private Driver(){ }
+    private Driver() {
+    }
+
     static WebDriver driver;
 
-    public static WebDriver getDriver(){
-        if(driver == null){
-            switch (ConfigReader.getProperty("browser")){
+    public static WebDriver getDriver() {
+        if (driver == null) {
+            switch (ConfigReader.getProperty("browser")) {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
@@ -59,8 +67,8 @@ public class Driver {
         return driver;
     }
 
-    public static void closeDriver(){
-        if (driver != null){
+    public static void closeDriver() {
+        if (driver != null) {
             driver.quit();
             driver = null;
         }
@@ -73,6 +81,7 @@ public class Driver {
             e.printStackTrace();
         }
     }
+
     /*
      * switches to new window by the exact title
      * returns to original window if windows with given title not found
@@ -87,10 +96,12 @@ public class Driver {
         }
         Driver.getDriver().switchTo().window(origin);
     }
+
     public static void hover(WebElement element) {
         Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(element).perform();
     }
+
     /**
      * return a list of string from a list of elements ignores any element with no
      * text
@@ -105,6 +116,7 @@ public class Driver {
         }
         return elemTexts;
     }
+
     public static List<String> getElementsText(By locator) {
         List<WebElement> elems = Driver.getDriver().findElements(locator);
         List<String> elemTexts = new ArrayList<>();
@@ -113,26 +125,32 @@ public class Driver {
         }
         return elemTexts;
     }
+
     public static WebElement waitForVisibility(WebElement element, int timeToWaitInSec) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeToWaitInSec);
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
+
     public static WebElement waitForVisibility(By locator, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
+
     public static Boolean waitForInVisibility(By locator, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
         return wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
+
     public static WebElement waitForClickablility(WebElement element, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
+
     public static WebElement waitForClickablility(By locator, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
+
     public static void waitForPageToLoad(long timeOutInSeconds) {
         ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver driver) {
@@ -146,6 +164,7 @@ public class Driver {
             error.printStackTrace();
         }
     }
+
     public static WebElement fluentWait(final WebElement webElement, int timeinsec) {
         FluentWait<WebDriver> wait = new FluentWait<WebDriver>(Driver.getDriver())
                 .withTimeout(Duration.ofSeconds(timeinsec))
@@ -158,6 +177,7 @@ public class Driver {
         });
         return element;
     }
+
     /**
      * Verifies whether the element matching the provided locator is displayed on page
      * fails if the element matching the provided locator is not found or not displayed
@@ -171,6 +191,7 @@ public class Driver {
             Assert.fail("Element not found: " + by);
         }
     }
+
     /**
      * Verifies whether the element matching the provided locator is NOT displayed on page
      * fails if the element matching the provided locator is not found or not displayed
@@ -184,6 +205,7 @@ public class Driver {
             e.printStackTrace();
         }
     }
+
     /**
      * Verifies whether the element is displayed on page
      * fails if the element is not found or not displayed
@@ -197,6 +219,7 @@ public class Driver {
             Assert.fail("Element not found: " + element);
         }
     }
+
     /**
      * Waits for element to be not stale
      *
@@ -226,6 +249,7 @@ public class Driver {
                 }
         }
     }
+
     /**
      * Selects a random value from a dropdown list and returns the selected Web Element
      *
@@ -239,6 +263,7 @@ public class Driver {
         select.selectByIndex(optionIndex);
         return select.getFirstSelectedOption();
     }
+
     /**
      * Clicks on an element using JavaScript
      *
@@ -248,6 +273,7 @@ public class Driver {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
     }
+
     /**
      * Scrolls down to an element using JavaScript
      *
@@ -256,6 +282,7 @@ public class Driver {
     public static void scrollToElement(WebElement element) {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
     }
+
     /**
      * Performs double click action on an element
      *
@@ -264,6 +291,7 @@ public class Driver {
     public static void doubleClick(WebElement element) {
         new Actions(Driver.getDriver()).doubleClick(element).build().perform();
     }
+
     /**
      * Changes the HTML attribute of a Web Element to the given value using JavaScript
      *
@@ -274,6 +302,7 @@ public class Driver {
     public static void setAttribute(WebElement element, String attributeName, String attributeValue) {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].setAttribute(arguments[1], arguments[2]);", element, attributeName, attributeValue);
     }
+
     /**
      * @param element
      * @param check
@@ -289,6 +318,7 @@ public class Driver {
             }
         }
     }
+
     public static void clickWithTimeOut(WebElement element, int timeout) {
         for (int i = 0; i < timeout; i++) {
             try {
@@ -299,6 +329,7 @@ public class Driver {
             }
         }
     }
+
     /**
      * executes the given JavaScript command on given web element
      *
@@ -308,6 +339,7 @@ public class Driver {
         JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
         jse.executeScript(command, element);
     }
+
     /**
      * executes the given JavaScript command on given web element
      *
@@ -319,18 +351,20 @@ public class Driver {
     }
 
 
-    public boolean isElementSelected(By locator){
+    public boolean isElementSelected(By locator) {
         return webAction(locator).isSelected();
     }
+
     public void sendValue(By locator, String value) {
-        try{
+        try {
             webAction(locator).sendKeys(value);
-        }catch (Exception e){
-            System.out.println("Some exception occured while sending value"+ locator);
+        } catch (Exception e) {
+            System.out.println("Some exception occured while sending value" + locator);
         }
 
     }
-    public static WebElement webAction(final By locator){
+
+    public static WebElement webAction(final By locator) {
         Wait<WebDriver> wait = new FluentWait<WebDriver>(getDriver())
                 .withTimeout(Duration.ofSeconds(15))
                 .pollingEvery(Duration.ofSeconds(1))
@@ -340,8 +374,8 @@ public class Driver {
                 .withMessage(
                         "Webdriver waited for 15 seconds nut still could not find the element therefore TimeOutException has been thrown"
                 );
-        return wait.until(new Function<WebDriver, WebElement>(){
-            public WebElement apply(WebDriver driver){
+        return wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver driver) {
                 return driver.findElement(locator);
             }
         });
@@ -399,102 +433,23 @@ public class Driver {
                 signIn.submitSignInButton.submit();
                 Driver.wait(1);
                 break;
-<<<<<<< HEAD
-        }
-=======
 
         }
 
     }
 
-    public static void changeCountry(Integer id,String country,String states) {
-        spec01 = new RequestSpecBuilder().
-                setBaseUri("https://www.gmibank.com/api/tp-countries").
-                build();
-        Map<String, Object> req = new HashMap<>();
-        req.put("id", id);
-        req.put("name", country);
-        req.put("states", states);
-        Response response = given().contentType(ContentType.JSON).
-                spec(spec01).
-                auth().oauth2(ConfigReader.getProperty("token")).
-                body(req).when().put();
-        response.prettyPrint();
-    }
 
-        public static void waitAndSendText(WebElement element, String text,int timeout){
-            for (int i = 0; i < timeout; i++) {
-                try {
-                    element.sendKeys(text);
-                    return;
-                } catch (WebDriverException e) {
-                    wait(1);
-                }
+    public static void waitAndSendText(WebElement element, String text, int timeout) {
+        for (int i = 0; i < timeout; i++) {
+            try {
+                element.sendKeys(text);
+                return;
+            } catch (WebDriverException e) {
+                wait(1);
             }
         }
-
-
-//<<<<<<< HEAD
     }
-//    public static void waitAndSendText(WebElement element, String text, int timeout) {
-//        for (int i = 0; i < timeout; i++) {
-//            try {
-//                element.sendKeys(text);
-//                return;
-//            } catch (WebDriverException e) {
-//                wait(1);
-//            }
-//        }
-//    }
-//
-//    public static String waitAndGetText(WebElement element, int timeout) {
-//        String text = "";
-//        for (int i = 0; i < timeout; i++) {
-//            try {
-//                text = element.getText();
-//                return text;
-//            } catch (WebDriverException e) {
-//                wait(1);
-//            }
-//        }
-//        return null;
-//    }
->>>>>>> master
+}
 
-//    public static String waitForGetPageTitle(String title) {
-//        try {
-//            WebDriverWait wait = new WebDriverWait(driver, 20);
-//            wait.until(ExpectedConditions.titleContains(title));
-//        } catch (Exception e) {
-//            System.out.println("some exception occurred  while getting title ");
-//        }
-//        return driver.getTitle();
-//    }
-//=======
-//        public static String waitAndGetText (WebElement element,int timeout){
-//            String text = "";
-//            for (int i = 0; i < timeout; i++) {
-//                try {
-//                    text = element.getText();
-//                    return text;
-//                } catch (WebDriverException e) {
-//                    wait(1);
-//                }
-//            }
-//            return null;
-//        }
-//
-//        public static String waitForGetPageTitle (String title) {
-//            try {
-//                WebDriverWait wait = new WebDriverWait(driver, 20);
-//                wait.until(ExpectedConditions.titleContains(title));
-//            } catch (Exception e) {
-//                System.out.println("some exception occurred  while getting title ");
-//            }
-//            return driver.getTitle();
-//
-//
-//        }
-//}
-//>>>>>>> master
+
 
