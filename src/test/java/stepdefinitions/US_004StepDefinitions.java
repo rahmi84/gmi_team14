@@ -57,7 +57,7 @@ public class US_004StepDefinitions {
     @Then("click Sign out menu")
     public void click_Sign_out_menu() {
         loginPage.usernameValidate.click();
-        loginPage.SignOutMenu.click();
+        loginPage.logoutButton.click();
     }
 
 
