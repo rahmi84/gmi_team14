@@ -10,7 +10,7 @@ public class MainCustomerPage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    @FindBy(id = "entity-menu")
+    @FindBy(xpath ="//li[@id='entity-menu']")
     public WebElement myOperationsDropdown;
 
     @FindBy(xpath = "//*[@id='entity-menu']/div/a[1]")
