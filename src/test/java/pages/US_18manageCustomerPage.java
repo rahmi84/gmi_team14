@@ -17,23 +17,37 @@ public class US_18manageCustomerPage {
     @FindBy(xpath = "//th[@class='hand']")
     public List<WebElement> customerInformationList;
 
-    @FindBy(xpath = "//dl[@class='jh-entity-details']")
-    public List<WebElement> viewCustomerInfoPageElements;
-
     @FindBy(xpath = "(//span[text()='View'][1])")
     public WebElement viewElement;
 
-    @FindBy(xpath = "//a[@href='/tp-customer/31806/edit']")
-    public WebElement edit2ButtonElement;
 
-    @FindBy(xpath = "//div[//@class=\"form-group\"]")
-    public List<WebElement> editCustomerInfoPagePopulate;
+    @FindBy(xpath = "//dl[@class='jh-entity-details']")
+    public List<WebElement> viewCustomerInfolist;
+
+
+    @FindBy(xpath = "//a[@href=\"/tp-customer/33854/edit?page=1&sort=id,asc\"]")
+    public WebElement editButtonElement;
+
+    @FindBy(xpath = "//form[@class=\"av-valid\"]")
+    public List<WebElement> editCustomerInfoList;
 
     @FindBy(id = "save-entity")
     public WebElement saveButtonPopulate;
 
-    @FindBy(xpath = "//span[text()='Edit']")
-    public WebElement editButtonElement;
+    @FindBy(xpath = "//input[@name=\"middleInitial\"]")
+    public WebElement editMiddleInitilalElement;
+
+    @FindBy(xpath = " (//span[text()='Delete'][1])")
+    public WebElement deleteButtonElement;
+
+    @FindBy(id = "jhi-confirm-delete-tPCustomer")
+    public WebElement deleteConfimationElement;
+
+    @FindBy(css = " [class=\"Toastify__toast-container Toastify__toast-container--top-left toastify-container\"]")
+    public WebElement deleteVerifyElement;
+
+
+
 
 
     @FindBy(xpath = "//span[text()='First Name']")
@@ -77,4 +91,5 @@ public class US_18manageCustomerPage {
         Driver.wait(1);
 
     }
+
 }

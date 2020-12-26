@@ -14,18 +14,14 @@ import org.junit.runner.RunWith;
         glue = "stepdefinitions",
 
 
-      tags = "@db",
+
+        tags = "@US_027",
+
+
         dryRun = false
 
-
-        //  tags = "@db",
-
-       // dryRun = true
-
-
 )
-public class RunnerGMI {
+public class RunnerUS_9_10_27 {
 
 
 }
-
