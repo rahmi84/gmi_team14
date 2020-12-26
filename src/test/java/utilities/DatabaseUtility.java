@@ -168,7 +168,7 @@
             }
             return columns;
         }
-        private static void executeQuery(String query) {
+        public static void executeQuery(String query) {
             try {
                 statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             } catch (SQLException e) {
@@ -182,7 +182,7 @@
                 e.printStackTrace();
             }
         }
-        public static int getRowCount() throws Exception {
+        public static int getRowCount(String query) throws Exception {
             resultSet.last();
             int rowCount = resultSet.getRow();
             return rowCount;
