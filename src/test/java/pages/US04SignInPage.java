@@ -35,9 +35,4 @@ public class US04SignInPage {
     @FindBy(xpath = "//*[@id='login-title']/button/span")
     public WebElement logoutButton;
 
-    @FindBy(xpath = "//*[@id='account-menu']/div/a[3]/span")
-    public WebElement SignOutMenu;
-
-    @FindBy(xpath = "//*[text()=' Please check your credentials and try again.']")
-    public WebElement errorMessage;
 }

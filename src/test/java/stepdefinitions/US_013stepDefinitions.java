@@ -70,7 +70,6 @@ public class US_013stepDefinitions {
     }
 
 
-
     @And("^save form$")
     public void save_form() {
 
@@ -78,28 +77,26 @@ public class US_013stepDefinitions {
         uS13EmployeeManageAccountsPage.saveButtonElement.click();
     }
 
-    @But("^error box content")
-    public void error_box_content_() {
-
-
-            Assert.assertTrue(uS13EmployeeManageAccountsPage.blankBalanceErrorElement.isDisplayed());
-
-            Assert.assertTrue(uS13EmployeeManageAccountsPage.descriptionInvalidElement.isDisplayed());
-
-
-    }
 
     @Then("Success message is displayed")
     public void successMessageIsDisplayed() {
         String successMessageActual = US13EmployeeManageAccountsPage.JsGetText(uS13EmployeeManageAccountsPage.saveSuccessMessage);
-        String  successMessageExpected="translation-not-found[gmiBankBackendApp.tPAccount.created]";
-        Assert.assertEquals(successMessageActual,successMessageExpected);
+        String successMessageExpected = "translation-not-found[gmiBankBackendApp.tPAccount.created]";
+        Assert.assertEquals(successMessageActual, successMessageExpected);
+    }
+
+    @But("^error box content")
+    public void error_box_content_() {
+
+
+        Assert.assertTrue(uS13EmployeeManageAccountsPage.blankBalanceErrorElement.isDisplayed());
+
+        Assert.assertTrue(uS13EmployeeManageAccountsPage.descriptionInvalidElement.isDisplayed());
+
+        Driver.getDriver().close();
     }
 
 }
-
-
-
 
 
 

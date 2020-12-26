@@ -1,7 +1,7 @@
-@Seda
+@US_009
 Feature:Create a customer feature
 
-  @US_009/TC_001
+
   Scenario Outline:Successful customer creating in GMI Bank Application
     Given Navigate to GMI Bank Application
     When A new customer click register button
