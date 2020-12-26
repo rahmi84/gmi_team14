@@ -10,6 +10,10 @@ public class US9US10US11EmployeeCreateOrEditACustomerPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
+
+    @FindBy(xpath = "//span[text()=\"Register\"]")
+    public WebElement registerCustomerButton;
+
     @FindBy(xpath = "//a[@href='/tp-customer']")
     public WebElement manageCustomerButton;
     @FindBy(id = "jh-create-entity")
@@ -50,5 +54,13 @@ public class US9US10US11EmployeeCreateOrEditACustomerPage {
     public WebElement zelleBox;
     @FindBy(xpath = "//button[@id=\"save-entity\"]")
     public WebElement saveBox;
+    @FindBy(xpath = "//input[@id='firstPassword']")
+    public WebElement newPasswordBox;
+    @FindBy(xpath = "//input[@id='secondPassword']")
+    public WebElement newPasswordConfirmation;
+    @FindBy(xpath = "//input[@id='username']")
+    public WebElement username;
+    @FindBy(xpath="//span[contains(text(),'Register')]")
+    public WebElement registerButton;
 }
 

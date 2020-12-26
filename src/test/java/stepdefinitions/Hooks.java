@@ -14,11 +14,16 @@ import utilities.Driver;
 
 public class Hooks {
 
+
     @Before
     public void setUp(){
+<<<<<<< HEAD
         //System.out.println("setUp Çalıştı.");
 
 
+=======
+        System.out.println("setUp Çalıştı.");
+>>>>>>> master
     }
 
 
@@ -28,9 +33,18 @@ public class Hooks {
         if(scenario.isFailed()){
             scenario.embed(screenshot , "image/png");
         }
+<<<<<<< HEAD
 //        Driver.closeDriver();
     }
 
 
 
 }
+=======
+
+     //  Driver.closeDriver();
+    }
+
+    }
+
+>>>>>>> master
