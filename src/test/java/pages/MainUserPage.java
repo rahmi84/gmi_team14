@@ -46,8 +46,8 @@ public class MainUserPage {
     @FindBy(xpath ="(//a[@href='#'])[2]")
     public WebElement team14_new_userButton;
 
-//    @FindBy(xpath ="//a[@href='/account/settings']")
-//    public WebElement UserInfoButton;
+    @FindBy(xpath ="//a[@href='/account/settings']")
+   public WebElement UserInfoButton;
 
 //    @FindBy(xpath = "//a[@href='/account/password']")
 //    public WebElement PasswordButton;

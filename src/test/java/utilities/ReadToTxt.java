@@ -90,7 +90,7 @@ public class ReadToTxt {
             System.out.println(line);
             int i = 0;
             while (line != null) {
-                States state = new States();
+                States state = new States("null",12,12);
                 String [] allLine = line.split(",");
 
                 int id = Integer.parseInt(allLine[1].trim());
@@ -141,7 +141,7 @@ public class ReadToTxt {
             System.out.println(line);
             int i = 0;
             while (line != null) {
-                States states = new States();
+                States states = new States("null",12,12);
                 states.setName(line.split(",")[0].trim());
                 states.setId(Integer.parseInt(line.split(",")[1].trim()));
                 sb.append(System.lineSeparator());
