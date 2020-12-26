@@ -111,9 +111,10 @@ public class US_018StepDefinitions {
             String  successMessageExpected="Toastify__toast-container Toastify__toast-container--top-left toastify-container";
             Assert.assertEquals(successMessageActual,successMessageExpected);
         }
+    @And("user create or update the user info for city")
+    public void userCreateOrUpdateTheUserInfoForCity() {
+        us_18manageCustomerPage.editMiddleInitilalElement.sendKeys("demir");
 
-    @And("edit user info")
-    public void editUserInfo() {
 
     }
 }

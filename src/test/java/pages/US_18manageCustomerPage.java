@@ -34,7 +34,8 @@ public class US_18manageCustomerPage {
     @FindBy(id = "save-entity")
     public WebElement saveButtonPopulate;
 
-
+    @FindBy(xpath = "//input[@name=\"middleInitial\"]")
+    public WebElement editMiddleInitilalElement;
 
     @FindBy(xpath = " (//span[text()='Delete'][1])")
     public WebElement deleteButtonElement;

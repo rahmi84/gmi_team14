@@ -27,7 +27,7 @@ edit button there
   @US18_TC04
   Scenario:The Edit portal can allow user to create or update the user info
     When Click  edit button
-    And edit user info
+    And user create or update the user info for city
     And See all customer info populated
 
 
