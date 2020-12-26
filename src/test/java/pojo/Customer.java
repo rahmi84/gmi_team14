@@ -21,7 +21,7 @@ public class Customer {
     private Country  country;
     private String state;
     private User user;
-    private String accounts;
+    private String  accounts;
 
     public int getId() {
         return id;

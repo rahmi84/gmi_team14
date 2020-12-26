@@ -11,10 +11,13 @@ Background:
     When   Retrive the All Customers
     Then   Verify the customer you created is in the payload
 
-
-
-
   @TC_02
   Scenario: create a costumer and validating all properties are matching
     When  get response and store response with JsonPath using endpoint"https://www.gmibank.com/api/tp-customers" with "custId" Pathparam
    Then validate the customers that created before
+
+  @TC_03
+  Scenario: UI API and Database validation with the customer created
+    When  get response and store response with JsonPath using endpoint"https://www.gmibank.com/api/tp-customers" with "custId" Pathparam
+    Then validate the customer with UI,API and Database perspective
+

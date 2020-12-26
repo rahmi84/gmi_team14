@@ -6,6 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
 public class MainCustomerPage {
+
     public MainCustomerPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
@@ -19,3 +20,4 @@ public class MainCustomerPage {
     @FindBy(id = "account-menu")
     public WebElement accountMenu;
 }
+

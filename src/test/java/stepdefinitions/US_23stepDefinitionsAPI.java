@@ -45,12 +45,6 @@ public class US_23stepDefinitionsAPI {
 
     }
 
-    @And("find out how many applicants are here and verify it")
-    public void find_out_how_many_applicants_are_here_and_verify_it() {
-        Integer actualApplcntscount=allApplcntData.size();
-        System.out.println(actualApplcntscount);
-        Assert.assertEquals(1659,actualApplcntscount.intValue());
-    }
 
     @And("create a new country")
     public void create_a_new_country() {
@@ -88,11 +82,6 @@ public class US_23stepDefinitionsAPI {
         Assert.assertEquals(phoneNumber,actualPhoneNumber);
     }
 
-    @And("verify last customer's user email {string} \\(us23)")
-    public void verify_last_customer_s_user_email_us23(String email) {
-        String actualEmail=allApplcntData.get(allApplcntData.size()-1).get("email").toString();
-        Assert.assertEquals(email,actualEmail);
-    }
 
 
 }
