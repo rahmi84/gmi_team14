@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
         glue = "stepdefinitions",
 
 
-      tags = "@api",
+      tags = "@updateCountry",
         dryRun = false
 
 
