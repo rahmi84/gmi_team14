@@ -15,3 +15,4 @@ Feature: System should allow to read states using api end point
     Given user sets the states to response using "https://www.gmibank.com/api/tp-states"
     And user deserialization all states Json to Java
     Then Validate your created all states one by one
+

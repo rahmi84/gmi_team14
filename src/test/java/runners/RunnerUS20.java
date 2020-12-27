@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
             glue = "stepdefinitions",
 
 
-            tags = "@api",
+            tags = "@TC_01api",
             dryRun = false
     )
     public class RunnerUS20 {
