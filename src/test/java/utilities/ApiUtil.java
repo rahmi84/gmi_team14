@@ -1,10 +1,14 @@
 package utilities;
 
 import com.github.javafaker.Faker;
+import io.cucumber.java.it.Ma;
+import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -105,5 +109,26 @@ public class ApiUtil {
 
         return customer;
 
+    }
+
+
+
+// role as Admin,Employee,User,Customer ---------------------->
+       public static String getToken(String role){
+        Map<String,String>credential=new HashMap<>();
+        credential.put("username",ConfigReader.getProperty(role+"Username"));
+        credential.put("password",ConfigReader.getProperty(role+"Password"));
+
+        Response response = RestAssured
+                .given()
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                .body(credential)
+                .post("https://gmibank.com/api/authenticate");
+
+        JsonPath jsonPath = response.jsonPath();
+        String token=jsonPath.getString("id_token");
+
+        return token;
     }
 }

@@ -22,7 +22,7 @@ public class Hooks {
 
 
 
-        System.out.println("setUp Çalıştı.");
+        System.out.println("setUp ...");
 
     }
 

@@ -5,6 +5,7 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import utilities.DatabaseUtility;
 import utilities.Driver;
@@ -33,7 +34,7 @@ public class bbbb {
         int page = faker.number().numberBetween(1, totalPage);
         int row = faker.number().numberBetween(1, 20);
 
-        while (k <= totalPage) {
+        while (k < totalPage) {
             for (int i = 1; i <= size; i++) {
                 if (k == page && i == row) {
                     Driver.wait(5);
@@ -49,16 +50,21 @@ public class bbbb {
                     list.add(templist);
                     System.out.println("size : "+totalPage+" - page : "+(page)+" - row "+row+" - id : "+id);
                     System.out.println("UI list  : " + templist);
-                    break;
+
                 }
             }
             k++;
-            next.click();
+            try {
+                next.click();
+            } catch (StaleElementReferenceException e) {
+                System.out.println("*********************************");
+            }
         }
         return list.get(0);
 
     }
     public static List<Object> testDB() {
+        Driver.wait(5);
         DatabaseUtility.createConnection("jdbc:postgresql://157.230.48.97:5432/gmibank_db", "techprodb_user", "Techpro_@126");
         String query = "Select first_name,last_name,middle_initial from tp_customer where id=" + id;
         List<Object> database = DatabaseUtility.getRowList(query);
