@@ -21,3 +21,4 @@ Background:
     When  get response and store response with JsonPath using endpoint"https://www.gmibank.com/api/tp-customers" with "custId" Pathparam
     Then validate the customer with UI,API and Database perspective
 
+

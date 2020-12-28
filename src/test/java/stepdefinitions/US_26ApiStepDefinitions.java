@@ -27,16 +27,16 @@ public class US_26ApiStepDefinitions extends ApiUtil {
     public void user_goes_to_end_point_and_change_any_user_s_country() {
 
         ApiUtil.actualCountry(18946);
-        System.out.println(".............");
+        System.out.println("after update");
 
-        ApiUtil.changeCountry(18946,"kenya",null);
+        ApiUtil.changeCountry(18946,"argentina",null);
     }
 
     @Then("verifies if actual one is updated")
     public void verifies_if_actual_one_is_updated() {
         Map<String,Object> req2= new HashMap<>();
         req2.put("id",18946);
-        req2.put("name","kenya");
+        req2.put("name","argentina");
         req2.put("states",null);
         spec01.pathParam("id","18946");
         Response response=given().
