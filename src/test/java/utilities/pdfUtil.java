@@ -19,18 +19,12 @@ public class pdfUtil {
         String[] headers = new String[len];
         for (int i = 0; i < len; i++) {
             headers[i] = header.get(i);
-
         }
-
         String[][] rows = new String[entry][len];
         for (int i = 0; i < entry; i++) {
-            rows[i][0] = list.get(i).get(0).toString();
-            rows[i][1] = list.get(i).get(1).toString();
-            rows[i][2] = list.get(i).get(2).toString();
-            rows[i][3] = list.get(i).get(3).toString();
-            rows[i][4] = list.get(i).get(4).toString();
-
-
+            for (int j = 0; j <len ; j++) {
+                rows[i][j] = list.get(i).get(j).toString();
+            }
         }
         Document document = new Document(PageSize.LETTER.rotate());
 

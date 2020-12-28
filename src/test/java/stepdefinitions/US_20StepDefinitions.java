@@ -184,11 +184,11 @@ public class US_20StepDefinitions {
     @And("get the print out the pdf documents")
     public void getThePrintOutThePdfDocuments() {
 
-        String query = "Select first_name,last_name,middle_initial,phone_number,ssn from tp_customer order by id desc ";
+        String query = "Select id,first_name,last_name,middle_initial,phone_number,ssn from tp_customer order by id desc ";
         List<List<Object>> list = DatabaseUtility.getQueryResultList(query);
-        List<String>header= Arrays.asList("Firstname", "Lastname", "Middlename", "phone number", "ssn");
+        List<String>header= Arrays.asList("id","Firstname", "Lastname", "Middlename", "phone number", "ssn");
 
-        pdfUtil.createPdf("GmiBank.pdf","Team 14 Customer Info",20,"ny.jpg",list,header);
+        pdfUtil.createPdf("GmiBank.pdf","Team 14 Customer Info",15,"ny.jpg",list,header);
 
         DatabaseUtility.closeConnection();
     }
