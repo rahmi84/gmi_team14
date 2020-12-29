@@ -188,8 +188,20 @@ public class US_20StepDefinitions {
         List<List<Object>> list = DatabaseUtility.getQueryResultList(query);
         List<String>header= Arrays.asList("id","Firstname", "Lastname", "Middlename", "phone number", "ssn");
 
-        pdfUtil.createPdf("GmiBank.pdf","Team 14 Customer Info",15,"ny.jpg",list,header);
+        pdfUtil.createPdf("GmiBank.pdf","Team 14 Customer Info",20,"ny.jpg",list,header);
+
+        String query1 = "Select tp_customer.id,first_name,last_name,ssn, balance from tp_customer  join " +
+                "tp_customer_account  on tp_customer.id=tp_customer_account.tpcustomer_id " +
+                "join tp_account  on tp_account.id=tp_customer_account.account_id" ;
+
+        List<List<Object>> list1 = DatabaseUtility.getQueryResultList(query1);
+
+        List<String>header1= Arrays.asList("id","Firstname", "Lastname",  "ssn","balance");
+        pdfUtil.createPdf("GmiBank1.pdf","Team 14 Customer Transaction ",10,"ny.jpg",list1,header1);
+
 
         DatabaseUtility.closeConnection();
     }
+
+
 }
