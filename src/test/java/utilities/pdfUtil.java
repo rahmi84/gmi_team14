@@ -21,6 +21,9 @@ public class pdfUtil {
             headers[i] = header.get(i);
         }
         String[][] rows = new String[entry][len];
+        if(entry>list.size()){
+            entry= list.size();
+        }
         for (int i = 0; i < entry; i++) {
             for (int j = 0; j <len ; j++) {
                 rows[i][j] = list.get(i).get(j).toString();
@@ -34,7 +37,7 @@ public class pdfUtil {
                     new FileOutputStream(new File(filename)));
             document.open();
             Font fontTitle = new Font(Font.FontFamily.TIMES_ROMAN, 20);
-
+            document.add(Image.getInstance(imagepath));
             document.add(new Paragraph("                                               " + title.toUpperCase(), fontTitle));
             document.add(new Paragraph("          "));
             document.add(new LineSeparator());
@@ -64,7 +67,6 @@ public class pdfUtil {
             document.add(table);
             document.add(new Paragraph("          "));
             document.add(new LineSeparator());
-            document.add(Image.getInstance(imagepath));
 
         } catch (DocumentException | IOException e) {
             e.printStackTrace();

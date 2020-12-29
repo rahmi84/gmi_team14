@@ -7,13 +7,18 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utilities.DatabaseUtility;
 import utilities.Driver;
+import utilities.pdfUtil;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class aaaa {
 
 
     public static void main(String[] args) {
-        String idFind = "61009";
+        String idFind = "39054";
         Driver.loginAll("employee");
         Driver.getDriver().findElement(By.xpath("//li[@id=\"entity-menu\"]")).click();
         Driver.getDriver().findElement(By.xpath("//*[@id=\"entity-menu\"]/div/a[1]/span")).click();
@@ -46,6 +51,25 @@ int k=1;
             next.click();
 
         }
+    }
+
+    @Test
+    public void databaseDeneme() {
+        DatabaseUtility.createConnection("jdbc:postgresql://157.230.48.97:5432/gmibank_db", "techprodb_user", "Techpro_@126");
+
+
+        String query1 = "Select tp_customer.id,first_name,last_name,ssn, balance from tp_customer  join " +
+                "tp_customer_account  on tp_customer.id=tp_customer_account.tpcustomer_id " +
+                "join tp_account  on tp_account.id=tp_customer_account.account_id " +
+                "where tp_customer.id=61827 order by balance desc" ;
+
+        List<List<Object>> list1 = DatabaseUtility.getQueryResultList(query1);
+
+        List<String>header1= Arrays.asList("id","Firstname", "Lastname",  "ssn","balance");
+        pdfUtil.createPdf("GmiBank1.pdf","Team 14 Customer Transaction ",100,"ny.jpg",list1,header1);
+
+
+        DatabaseUtility.closeConnection();
     }
 
 }
