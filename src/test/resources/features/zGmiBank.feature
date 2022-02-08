@@ -1,3 +1,4 @@
+@a
 @gmibankhomepage
 Feature: Go To Home Page
   Scenario: User go to GmiBank home page

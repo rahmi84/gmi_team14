@@ -1,16 +1,15 @@
 package stepdefinitions;
 
+import io.cucumber.core.gherkin.Feature;
 import io.cucumber.java.After;
-import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import io.cucumber.java.en.Given;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import pages.US13EmployeeManageAccountsPage;
 import utilities.Driver;
+
+import java.util.concurrent.TimeUnit;
 
 public class Hooks {
 
@@ -19,6 +18,8 @@ public class Hooks {
     public void setUp(){
 
         //System.out.println("setUp Çalıştı.");
+        Driver.getDriver().manage().window().maximize();
+        Driver.getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
 
 
@@ -29,13 +30,14 @@ public class Hooks {
 
     @After
     public void tearDown(Scenario scenario){
+        System.out.println( "   Scenario is executed     :  "+scenario.getName());
         final byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
         if(scenario.isFailed()){
             scenario.embed(screenshot , "image/png");
         }
 
 
-//        Driver.closeDriver();
+       Driver.close();
 
     }
 

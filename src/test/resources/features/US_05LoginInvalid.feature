@@ -1,3 +1,4 @@
+@b
 @US_05_Smoke
 Feature: US_05 Login page should not be accessible with invalid credentials
 

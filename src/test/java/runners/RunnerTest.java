@@ -10,21 +10,18 @@ import org.junit.runner.RunWith;
         plugin = {"html:target/default-cucumber-reports",
                 "json:target/json-reports/cucumber.json",
                 "junit:target/xml-report/cucumber.xml"},
-        features = "src/test/resources/features",
-        glue = "stepdefinitions",
+        features = "classpath:features",
+        glue = "",
 
 
-      tags = "@updateCountry",
+  //    tags = "@updateCountry",
         dryRun = false
 
 
-        //  tags = "@db",
-
-       // dryRun = true
 
 
 )
-public class RunnerGMI {
+public class RunnerTest {
 
 
 }

@@ -1,3 +1,4 @@
+@b
 @us11
 Feature: US1 Any field on the registration page should not be left blank
   Background: All custumer registration tests common links

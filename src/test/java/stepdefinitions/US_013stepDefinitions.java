@@ -5,6 +5,7 @@ import org.junit.Assert;
 import pages.MainEmployeePage;
 import pages.US13EmployeeManageAccountsPage;
 import utilities.Driver;
+
 import java.util.ArrayList;
 
 public class US_013stepDefinitions {
@@ -42,9 +43,9 @@ public class US_013stepDefinitions {
 
         uS13EmployeeManageAccountsPage.balanceElement.sendKeys(balance);
 
-        ArrayList<Character> c = new ArrayList<>();
-        c.add('$');
-        c.add('€');
+        ArrayList<String> c = new ArrayList<>();
+        c.add("$");
+        c.add("€");
         for (int i = 0; i < 2; i++) {
             if (balance.contains(String.valueOf(c.get(i)))) {
                 Assert.assertTrue(uS13EmployeeManageAccountsPage.blankBalanceErrorElement.isDisplayed());

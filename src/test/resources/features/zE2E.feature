@@ -1,6 +1,7 @@
+@a
 Feature: Multi-Enviroment Validation
 
-  @TC_01api
+
   Scenario: UI API and Database validation with the customer created
     Given create a customer with map and send to end point "https://www.gmibank.com/api/tp-customers"
     And   Retrive the CustomerId you created

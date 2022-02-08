@@ -1,4 +1,4 @@
-@api
+
 Feature: Read all customers you created and validate them from your data set
          Read all customers you created and validate them 1 by 1
 
